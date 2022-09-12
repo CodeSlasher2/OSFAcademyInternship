@@ -1,0 +1,108 @@
+.container {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inner-nav-container {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.logo-name {
+  text-align: center;
+  margin: auto;
+  margin-left: 10px;
+  &-1 {
+    color: $blue;
+    font-size: 31.65px;
+    font-weight: 900;
+  }
+  &-2 {
+    color: $green;
+    font-size: 18px;
+  }
+}
+
+.logo-osf {
+  margin-right: 10px;
+  display: flex;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav-link {
+  margin: auto 0px;
+  padding: 22px 22px;
+  color: $gray;
+  transition: all 0.2s linear;
+  &:hover {
+    background-color: $blue;
+    color: $white;
+    cursor: pointer;
+    border-bottom: solid 2px $green;
+    border-color: $green;
+  }
+}
+
+.arrow-down {
+  padding-left: 10px;
+}
+
+.btn {
+  border: none;
+  background-color: $white;
+}
+
+.btn-nav {
+  margin-left: 15px;
+  margin-right: 15px;
+
+  &:last-child {
+    margin-right: 0px;
+    padding-right: 0px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.products-counter,
+.favorite-counter {
+  position: relative;
+}
+
+.counter {
+  display: flex;
+  margin: auto 0px;
+}
+
+.counter-position {
+  position: absolute;
+  top: 1.5px;
+  left: 4.8px;
+}
+
+.elipse-2 {
+  margin-bottom: 3px;
+}
+
+.icn-nav {
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    filter: brightness(0) saturate(100%);
+    filter: invert(58%) sepia(97%) saturate(354%) hue-rotate(40deg)
+      brightness(94%) contrast(92%);
+  }
+}
+// .icn-nav:hover {
+//   border-top-color: alpha($color: #000000);
+// }
