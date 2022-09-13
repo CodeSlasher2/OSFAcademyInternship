@@ -12,7 +12,7 @@
 }
 
 .product-categories-container {
-  width: 50%;
+  width: 45%;
 }
 
 .products {
@@ -23,11 +23,9 @@
   justify-content: center;
 }
 
-.dropdown-title {
+.dropdown-products-title {
   justify-self: center;
-}
-
-.product-list {
+  font-weight: 800;
 }
 
 .products-categories-inner {
@@ -46,4 +44,30 @@
   line-height: 1.9em;
   color: $white;
   font-size: 16px;
+  transition: color 0.2 ease-in-out;
+  &:hover {
+    color: $green;
+  }
+}
+
+.sales {
+  @extend .products;
+  max-width: 25%;
+}
+
+.sales-list-inner {
+  padding-top: 20px;
+}
+
+.photo-dropdown {
+  width: 100%;
+  max-width: 272px;
+  height: 100%;
+  max-height: 276px;
+  align-self: center;
+}
+
+.dropdown-photo {
+  display: flex;
+  justify-content: center;
 }
