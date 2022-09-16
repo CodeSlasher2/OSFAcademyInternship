@@ -1,0 +1,83 @@
+.popular-items-container {
+  width: 100%;
+  background-color: $blue;
+}
+
+.card-container {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  height: 365px;
+  width: 100%;
+  max-width: 270px;
+  border-radius: 7px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.card-img-top {
+  max-width: 270px;
+  height: 265px;
+}
+
+.card-body {
+  background-color: $white;
+  width: 100%;
+  max-width: 270px;
+  height: 100%;
+  max-height: 105px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.card-text {
+  text-align: center;
+  font-size: 16px;
+  color: $gray;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 14px;
+  color: $blue-light;
+}
+
+.buy-now-btn {
+  border: solid 2px rgba($color: #7f7f7f, $alpha: 0.3);
+  color: #000;
+  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: 35px;
+  width: 190px;
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  max-height: 40px;
+  cursor: pointer;
+}
+
+.card-2-price {
+  color: $green;
+  display: flex;
+  border-right: solid 2px rgba($color: #7f7f7f, $alpha: 0.3);
+  padding-right: 10px;
+}
+
+.butttns {
+  align-self: center;
+}
+
+// .line-between {
+//   height: 20px;
+//   width: 3px;
+//   background-color: red;
+// }
