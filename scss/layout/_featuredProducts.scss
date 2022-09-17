@@ -1,0 +1,99 @@
+.featured-products {
+  width: 100%;
+  background-color: $blue;
+  padding-top: 45px;
+}
+
+.container-3 {
+  max-width: 1170px;
+  margin: 0px auto;
+}
+
+.title-and-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: $white;
+  }
+  p {
+    font-size: 18px;
+    color: $white;
+    margin: 25px 0px;
+  }
+}
+
+.featured-products-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  hr {
+    height: 3px;
+    width: 100%;
+    max-width: 236px;
+    border: none;
+    background-color: $white;
+    margin: 0px 8px;
+    align-self: center;
+  }
+  button {
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    border: none;
+    width: 29px;
+    height: 29px;
+    &:hover {
+      background-color: rgba($color: #fff, $alpha: 1);
+      .arrow {
+        color: $blue;
+      }
+    }
+  }
+}
+
+.arrow {
+  color: white;
+  opacity: 1;
+  margin: auto;
+}
+//////////////// CARDS
+///
+///
+
+.featured-products-card-container {
+  margin: 50px 0px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card-3 {
+  width: 270px;
+  height: 296px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.card-body-3 {
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  height: 109px;
+}
+
+.card-text-3 {
+  color: $gray !important;
+  margin: 0px !important;
+}
+
+.card-title-3 {
+  color: $green;
+  font-size: 14px;
+  font-weight: 800;
+}

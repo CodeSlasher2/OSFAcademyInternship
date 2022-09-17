@@ -20,7 +20,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
 }
 
 .slide-content {
@@ -28,45 +27,46 @@
   height: 505px;
 }
 
-.slider-title,
-.slider-text,
+.slider-title-1,
+.slider-text-1,
 .slider-btn {
-  position: absolute;
+  position: relative;
   text-shadow: 2px 1px rgba($color: #000000, $alpha: 0.2);
 }
 
+.slider-text-container-1 {
+  @include sliderTextContainer;
+
+  margin-left: 55px;
+}
+
+.slider-text-container-2 {
+  @include sliderTextContainer;
+
+  text-align: center;
+  align-items: center;
+  left: 145px;
+}
+
+.slider-text-container-3 {
+  @include sliderTextContainer;
+  left: 235px;
+  text-align: right;
+  align-items: flex-end;
+  margin-right: 55px;
+  width: 580px;
+}
+
 .slider-title {
-  width: 100%;
-  max-width: 580px;
-  font-size: 48px;
-  font-weight: 900;
-  top: 80px;
-  left: 53px;
-  color: $white;
+  @include sliderTitle;
 }
 
 .slider-text {
-  line-height: 1.2em;
-  font-size: 14px;
-  font-weight: 200;
-  max-width: 350px;
-  left: 53px;
-  top: 285px;
-  color: $white;
+  @include sliderText;
 }
 
 .slider-btn {
-  bottom: 103px;
-  left: 53px;
-  color: $white;
-  border: solid 2px $white;
-  border-radius: 45px;
-  padding: 13px 35px;
-  cursor: pointer;
-  background-color: transparent;
-  a {
-    color: $white;
-  }
+  @include btnView;
 }
 
 .slider-nav {
@@ -74,7 +74,6 @@
   display: flex;
   width: fit-content;
   height: 12px;
-  // width: fit-content;
   align-self: center;
   background-color: transparent;
   bottom: 45px;
@@ -171,6 +170,15 @@
   background-color: transparent;
   a {
     color: $white;
+  }
+  &:hover {
+    background-color: #3a5b96;
+    .fb-logo {
+      color: $white;
+    }
+    .follow-text {
+      color: $white;
+    }
   }
 }
 

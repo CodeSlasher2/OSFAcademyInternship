@@ -1,0 +1,51 @@
+/*
+///
+///SLIDER
+///
+*/
+
+@mixin sliderTitle {
+  width: 100%;
+  max-width: 580px;
+  font-size: 48px;
+  font-weight: 900;
+  color: $white;
+}
+
+@mixin sliderText {
+  line-height: 1.2em;
+  font-size: 14px;
+  font-weight: 200;
+  max-width: 350px;
+  color: $white;
+}
+
+@mixin btnView {
+  color: $white;
+  border: solid 2px $white;
+  border-radius: 45px;
+  padding: 13px 35px;
+  max-width: 160px;
+  cursor: pointer;
+  background-color: transparent;
+  a {
+    color: $white;
+  }
+}
+
+@mixin sliderTextContainer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+/*
+///
+///SLIDER
+///
+*/

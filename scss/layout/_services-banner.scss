@@ -1,0 +1,41 @@
+.services-banner {
+  width: 100%;
+  background-color: $gray;
+}
+
+.container-4 {
+  max-width: 1170px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-part {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-icn {
+  height: fit-content;
+  width: fit-content;
+}
+
+.text-services {
+  margin-left: 40px;
+  h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: $white;
+  }
+  p {
+    width: 206px;
+    margin-top: 22px;
+    color: #868380;
+    font-size: 14px;
+    line-height: 1.2em;
+  }
+}
