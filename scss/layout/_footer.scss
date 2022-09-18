@@ -4,8 +4,74 @@
   margin: 40px auto 0 auto;
   display: flex;
   justify-content: space-between;
+  align-self: center;
   li {
     margin: 10px 0;
+  }
+  @include mq(small) {
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 0px;
+    margin-top: 40px;
+    ul {
+      display: none;
+    }
+    & > div:not(:last-child) {
+      margin-left: 25px !important;
+    }
+    .copyright-container,
+    .about-footer-container,
+    .categories-footer-container {
+      // padding-top: 20px;
+      max-width: 90%;
+    }
+    .social-icons {
+      align-self: center;
+      margin: 50px 0;
+    }
+    .title-wrapper {
+      display: flex;
+      max-height: 100%;
+    }
+    .title {
+      width: 90%;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .arr {
+      display: inline;
+      width: fit-content;
+      height: fit-content;
+      align-self: center;
+      padding-right: 10px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+  @include mq(medium) {
+    max-width: 90%;
+    .copyright-container {
+      max-width: 145px;
+      margin-right: 10px;
+    }
+    .categories-footer-container {
+      max-width: 400px;
+    }
+    .about-footer-container {
+      margin-left: 10px !important;
+    }
+    .social-icons {
+      display: flex;
+      flex-direction: column;
+      img {
+        margin: 20px;
+      }
+    }
+    li {
+      font-size: 12px;
+    }
   }
 }
 
@@ -13,16 +79,17 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 20px;
   color: $gray;
   font-size: 13px;
   line-height: 1.4em;
 }
 
 .addres-outer {
+  width: 100%;
   h2 {
-    margin-top: 35px;
-    margin-bottom: 15px;
     color: #333333;
+    font-size: 16px;
   }
 }
 
@@ -71,7 +138,43 @@
 .about-footer-container {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.arr {
+  display: none;
+}
+
+//
+//
+// icons
+
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-between;
+  img {
+    width: fit-content;
+    height: fit-content;
+    margin: 0px 10px;
+    transform: scale(1.4);
+    filter: invert(15%) sepia(42%) saturate(0%) hue-rotate(199deg)
+      brightness(102%) contrast(91%);
+    opacity: 0.5;
+    transition: color 0.2s ease-in-out;
+    &:hover {
+      filter: invert(71%) sepia(28%) saturate(964%) hue-rotate(39deg)
+        brightness(86%) contrast(104%);
+    }
+  }
+}
+
+// //
+// dropdown footer
+// //
+
+.active {
   ul {
-    padding-top: 20px;
+    display: block;
   }
 }

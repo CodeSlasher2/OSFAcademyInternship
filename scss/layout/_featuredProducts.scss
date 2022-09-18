@@ -2,11 +2,17 @@
   width: 100%;
   background-color: $blue;
   padding-top: 45px;
+  @include mq(small) {
+    display: none;
+  }
 }
 
 .container-3 {
   max-width: 1170px;
   margin: 0px auto;
+  @include mq(medium) {
+    width: 75%;
+  }
 }
 
 .title-and-nav {
@@ -66,7 +72,12 @@
   margin: 50px 0px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
+  @include mq(medium) {
+    gap: 1.5rem;
+    justify-content: space-around;
+  }
 }
 
 .card-3 {

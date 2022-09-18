@@ -49,3 +49,27 @@
 ///SLIDER
 ///
 */
+
+/*
+///
+///Mediaquery
+///
+*/
+
+@mixin mq($break) {
+  @if $break == "small" {
+    @media (min-width: $bp-s) and (max-width: $bp-m) {
+      @content;
+    }
+  } @else if $break == "medium" {
+    @media (min-width: ($bp-m + 1)) and (max-width: $bp-l) {
+      @content;
+    }
+  } @else if $break == "large" {
+    @media (min-width: $bp-l) {
+      @content;
+    }
+  } @else {
+    @error 'bad value passed';
+  }
+}

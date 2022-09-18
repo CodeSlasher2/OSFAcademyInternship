@@ -3,8 +3,12 @@
 .container-hero {
   height: 561px;
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
+  ///
+  ///
+  display: none;
 }
 
 .inner-hero {

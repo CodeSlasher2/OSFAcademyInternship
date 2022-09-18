@@ -1,6 +1,16 @@
-.container {
+body {
   width: 100%;
-  max-width: 1170px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+}
+
+.container {
+  width: 100vw;
+  // max-width: 1170px;
   margin: 0 auto;
   height: 100%;
   max-height: 5000px;
@@ -20,6 +30,9 @@
 .logo-osf {
   margin-right: 10px;
   display: flex;
+  @include mq(medium) {
+    margin: 0 auto;
+  }
 }
 
 .logo-name {
@@ -39,9 +52,14 @@
 
 .nav {
   display: flex;
-
   height: 100%;
   max-height: 60px;
+  @include mq(small) {
+    display: none;
+  }
+  @include mq(medium) {
+    display: none;
+  }
 }
 
 .nav-link {
@@ -107,19 +125,6 @@
       brightness(94%) contrast(92%);
   }
 }
-// .icn-nav:hover {
-//   border-top-color: alpha($color: #000000);
-// }
-
-// .currency-btn {
-//   padding-left: 10px;
-//   padding-right: 35px;
-// }
-
-// .language-btn {
-//   padding-left: 10px;
-//   padding-right: 10px;
-// }
 
 .nav-contact {
   padding-right: 32px;
@@ -131,3 +136,7 @@
   margin: 0px;
   padding: 0px;
 }
+
+// // //
+// Burger Menu
+// // //
