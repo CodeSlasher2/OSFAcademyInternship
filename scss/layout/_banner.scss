@@ -4,55 +4,68 @@
   max-height: 445px;
   background-color: $blue;
   color: $blue;
+  // display: none;
 }
 
 .banner {
-  background-image: url(../../build/images/banner/banner.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  // height: 100%;
   min-height: 455px;
-  // max-height: 445px;
-  // width: 100%;
   max-width: 1280px;
-  // min-width: 320px;
-  // margin: 0px auto;
   display: flex;
+  position: relative;
+  margin: 0 auto;
+
   @include mq(small) {
-    background-image: url(../../build/images/banner/banner-small.png);
-    background-size: cover;
-    min-height: 185px;
     width: 100%;
+    min-height: 185px;
+    max-height: none;
+
     .banner-text {
       width: 90%;
       align-self: center;
       margin: 0 auto;
-      h1 {
+
+      > img {
+        width: 100%;
+        height: 100%;
+        src: url(../../build/images/banner/banner-small.png);
+      }
+      > h1 {
         font-size: 30px;
-        margin-top: 1.5rem;
       }
     }
   }
 }
 
 .banner-text {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
   color: $white;
-  justify-content: center;
-  height: 100%;
+  height: fit-content;
   width: 100%;
   align-self: center;
   h1 {
     font-size: 49px;
     font-weight: 800;
     align-self: center;
-    margin-bottom: 43px;
   }
   p {
     align-self: center;
     max-width: 370px;
     font-size: 14px;
+  }
+}
+
+.banner {
+  > img {
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }

@@ -1,6 +1,33 @@
 .popular-items-container {
   width: 100%;
   background-color: $blue;
+  padding-top: 50px;
+  // display: none;
+  @include mq(small) {
+    .container-2 {
+      width: 90%;
+      min-height: 510px;
+    }
+    .card-container {
+      position: relative;
+      height: 365px;
+      width: 270px;
+      align-self: center;
+    }
+    .card {
+      position: absolute;
+    }
+
+    .btn-load-more {
+      display: none;
+    }
+  }
+  @include mq(medium) {
+    .card-container {
+      width: 90%;
+      justify-content: space-evenly;
+    }
+  }
 }
 
 .container-2 {
@@ -11,27 +38,24 @@
   max-height: 5000px;
   display: flex;
   flex-direction: column;
+  gap: 40px;
 }
 
 .popular-items-container-inner {
-  margin-bottom: 45px;
-  padding-top: 85px;
-
   width: 100%;
   max-width: 1170px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .popular-items-title {
   font-size: 24px;
   font-weight: 800;
-  width: 100%;
-  max-width: 160px;
+  min-width: 160px;
   color: $white;
-  padding: 0px 50px;
+  text-align: center;
 }
 
 .line {

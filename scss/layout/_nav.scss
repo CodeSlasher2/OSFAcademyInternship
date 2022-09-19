@@ -1,16 +1,38 @@
 body {
-  width: 100%;
+  min-width: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 
 .header {
   width: 100%;
+  @include mq(small) {
+    .menu {
+      position: fixed;
+      display: block;
+    }
+    .inner-nav-container {
+      // display: none;
+      padding-top: 5px;
+      height: 50px;
+      margin-top: 0;
+      position: fixed;
+      z-index: 100;
+      background-color: $white;
+    }
+    .logo-osf {
+      margin: 0 auto;
+    }
+    .logo-name {
+      display: none;
+    }
+  }
 }
 
 .container {
-  width: 100vw;
-  // max-width: 1170px;
+  width: 100%;
+  max-width: 1170px;
   margin: 0 auto;
   height: 100%;
   max-height: 5000px;
@@ -52,24 +74,89 @@ body {
 
 .nav {
   display: flex;
-  height: 100%;
+  align-items: flex-end;
+  align-self: flex-end;
+  // height: 100%;
   max-height: 60px;
+  max-width: 1170px;
   @include mq(small) {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    max-height: 600px;
+    background-color: $blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+
+    .nav-mobile-photo {
+      display: block;
+    }
     display: none;
+  }
+}
+
+.nav-inner {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+  gap: 1rem;
+  height: 60px;
+
+  @include mq(small) {
+    width: 100%;
+    height: fit-content;
+    justify-content: flex-start;
+    background-color: $blue;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    z-index: 9999999;
+    .nav-link {
+      align-self: flex-start;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      padding: 12px 0;
+      color: $white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .btn-nav {
+      display: none;
+    }
+    .language-btn,
+    .currency-btn {
+      display: none;
+    }
+
+    h2 {
+      display: block;
+      z-index: 99999999;
+    }
   }
   @include mq(medium) {
     display: none;
   }
 }
 
-.nav-link {
-  align-self: flex-end;
+.nav-mobile-photo {
+  display: none;
+}
 
-  padding: 22px 11px;
+.nav-link {
+  // padding: 30px 10px;
   height: 100%;
-  max-height: 60px;
   color: $gray;
   transition: all 0.1s linear;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
   &:hover {
     background-color: $blue;
     color: $white;
@@ -97,24 +184,27 @@ body {
   }
 }
 
-.products-counter,
-.favorite-counter {
-  position: relative;
-}
-
 .counter {
   display: flex;
   margin: auto 0px;
+  position: relative;
+}
+
+.products-counter,
+.favorite-counter {
+  border: solid 2px $green;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+  right: -7px;
+  top: -10px;
+  background-color: $white;
 }
 
 .counter-position {
-  position: absolute;
-  // top: 1.5px;
-  left: 4.8px;
-}
-
-.elipse-2 {
-  margin-right: 5px;
+  margin: auto;
+  color: $green;
 }
 
 .icn-nav {
@@ -127,7 +217,7 @@ body {
 }
 
 .nav-contact {
-  padding-right: 32px;
+  margin-right: 32px;
 }
 
 .nav-line {
@@ -140,3 +230,79 @@ body {
 // // //
 // Burger Menu
 // // //
+.mobile-menu {
+  @include btn(0px, 100px);
+
+  .icon-left {
+    @include icon(8px, 30px);
+    left: 0px;
+
+    &:before {
+      @include icon-before(8px, 30px, -20px);
+    }
+
+    &:after {
+      @include icon-after(8px, 30px, 20px);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .icon-right {
+    @include icon(8px, 30px);
+    left: 30px;
+
+    &:before {
+      @include icon-before(8px, 30px, -20px);
+    }
+
+    &:after {
+      @include icon-after(8px, 30px, 20px);
+    }
+  }
+
+  &.open {
+    .icon-left {
+      transition-duration: 0.5s;
+      background: transparent;
+
+      &:before {
+        transform: rotateZ(45deg) scaleX(1.4) translate(4px, 4px);
+      }
+
+      &:after {
+        transform: rotateZ(-45deg) scaleX(1.4) translate(4px, -4px);
+      }
+    }
+
+    .icon-right {
+      transition-duration: 0.5s;
+      background: transparent;
+
+      &:before {
+        transform: rotateZ(-45deg) scaleX(1.4) translate(-4px, 4px);
+      }
+
+      &:after {
+        transform: rotateZ(45deg) scaleX(1.4) translate(-4px, -4px);
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.menu {
+  display: none;
+  z-index: 100;
+  transform: scale(0.5);
+  position: absolute;
+  top: -5px;
+}
+
+.active {
+  display: block;
+}
