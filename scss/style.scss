@@ -10,9 +10,9 @@
 @import "base/base", "base/reset";
 
 //// LAYOUT
-@import "layout/nav", "layout/featuredProducts", "layout/banner",
-  "layout/services-banner", "layout/popularItems", "layout/footer",
-  "layout/dropdown", "layout/slidersales";
+@import "layout/dropdown", "layout/nav", "layout/featuredProducts",
+  "layout/banner", "layout/services-banner", "layout/popularItems",
+  "layout/footer", "layout/slidersales";
 
 //// COMPONENT STYLE
 @import "components/buttons", "components/icons", "components/images";

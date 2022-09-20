@@ -28,6 +28,14 @@ body {
       display: none;
     }
   }
+  @include mq(medium) {
+    .menu {
+      .menu {
+        position: fixed;
+        display: block;
+      }
+    }
+  }
 }
 
 .container {
@@ -80,26 +88,38 @@ body {
   max-height: 60px;
   max-width: 1170px;
   @include mq(small) {
-    position: absolute;
+    position: fixed;
     top: 55px;
     left: 0;
-    width: 100%;
+    max-width: 300px;
+    min-width: 100%;
     max-height: 600px;
     background-color: $blue;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 50px;
+    gap: 1rem;
+    overflow: auto;
+    // scroll-behavior: smooth;
+    .nav-link {
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+    }
 
+    //
     .nav-mobile-photo {
-      display: block;
+      display: flex;
+      height: 250px;
+      > img {
+        margin: 0px auto;
+      }
     }
     display: none;
   }
 }
 
 .nav-inner {
-  margin-top: 25px;
   display: flex;
   justify-content: space-between;
   align-self: flex-end;
@@ -107,30 +127,52 @@ body {
   height: 60px;
 
   @include mq(small) {
+    // width: 90%;
+    margin-top: 25px;
     width: 100%;
     height: fit-content;
+    position: relative;
     justify-content: flex-start;
     background-color: $blue;
     flex-direction: column;
     gap: 1rem;
     align-items: center;
     z-index: 9999999;
+    overflow-block: inherit;
     .nav-link {
       align-self: flex-start;
       text-align: left;
-      display: flex;
-      justify-content: space-between;
+      //
+      display: block;
+      //
+      height: fit-content !important;
+      margin-left: 16px;
       width: 90%;
       padding: 12px 0;
       color: $white;
       font-weight: 800;
       font-size: 14px;
+      &:first-child {
+        padding: 0;
+      }
+      h1 {
+        width: 100%;
+        height: 100%;
+        padding: 12px 0;
+      }
+    }
+    .arrow-down {
+      float: right;
     }
     .btn-nav {
       display: none;
     }
     .language-btn,
     .currency-btn {
+      display: none;
+      position: relative;
+    }
+    ul {
       display: none;
     }
 
@@ -157,12 +199,23 @@ body {
   display: flex;
   align-items: center;
   padding: 0 10px;
+  position: relative;
   &:hover {
     background-color: $blue;
     color: $white;
     cursor: pointer;
     border-bottom: solid 3px $green;
-    border-color: $green;
+  }
+  h1 {
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+
+.noborder {
+  border: none;
+  &:hover {
+    border: none;
   }
 }
 
@@ -305,4 +358,38 @@ body {
 
 .active {
   display: block;
+  height: fit-content;
+}
+
+.dropdown {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/// // /// // /
+/// Language dropdown
+///
+///
+.language-btn {
+  position: relative;
+}
+
+.select-language-dropdown {
+  // display: none;
+  position: absolute;
+  top: 63px;
+  width: 3rem;
+  height: 4rem;
+  z-index: 2;
+}
+
+.select-language-dropdown-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $blue;
+  align-items: center;
+  color: $white;
 }
