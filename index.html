@@ -35,7 +35,7 @@
           </a>
           <nav class="nav">
             <div class="nav-inner">
-            <div href="#index.html" class=" nav-link" >
+            <div href="#index.html" class=" nav-link nav-link-1" id="dropdown-services" data-dropdown-btn>
               <h1 class="dropdown">
               SERVICES
               <span class="arrow-down"
@@ -47,12 +47,12 @@
               <!-- DROPDOWN -->
               <!--  -->
               <!--  -->
-              <div class="dropdown-content">
+              <div class="dropdown-content" data-dropdown>
                 <div class="container-dropdown">
                   <div class="product-categories-container">
                     <div class="products">
-                      <h2 class="dropdown-products-title" data-dropdown-btn>PRODUCT CATEGORIES
-                        <span class="arrow-down" data-dropdown-inner
+                      <h2 class="dropdown-products-title" >PRODUCT CATEGORIES
+                        <span class="arrow-down" 
                         ><img src="build/images/dropdown-arrow.png"
                       /></span>
                       </h2>
@@ -92,8 +92,8 @@
                   </div>
                   <div class="sales">
                     <div class="sales-title">
-                      <h2 class="dropdown-products-title" data-dropdown-btn>
-                      SALES  <span class="arrow-down" data-dropdown-inner
+                      <h2 class="dropdown-products-title" >
+                      SALES  <span class="arrow-down" 
                       ><img src="build/images/dropdown-arrow.png"
                     /></span>
                       </h2>
@@ -137,22 +137,32 @@
                 ><img src="build/images/dropdown-arrow.png"
               /></span>
             </div>
-            <div class="language-btn nav-link">
-               <h1>EN<span class="arrow-down"
+            <div class="language-btn nav-link" data-dropdown-btn-1>
+               <h1 class="selected-option">EN
+              </h1>
+              <span class="arrow-down"
                 ><img src="build/images/dropdown-arrow.png"
               /></span>
-              </h1>
-              <div class="select-language-dropdown">
-                <div class="select-language-dropdown-inner">
-                <div class="select-language-1">RU</div>
-                <div class="select-language-1">RO</div>
-              </div>
-              </div>
+                <div class="select-language-dropdown" data-dropdown-1>
+                  <div class="select-language-dropdown-inner">
+                    <div class="select-language-1 " value="en">EN</div>
+                  <div class="select-language-1 " value="ru">RU</div>
+                  <div class="select-language-1" value="ro">RO</div>
+                </div>
+                </div>
             </div>
             <div class="currency-btn nav-link">
-              $US<span class="arrow-down"
+              <h1 class="selected-option-2">$ US</h1> 
+              <span class="arrow-down"
                 ><img src="build/images/dropdown-arrow.png"
               /></span>
+              <div class="currency-dropdown">
+                <div class="currency-dropdown-inner">
+                  <div class="select-currency-1" value="&euro; euro">&euro; EUR</div>
+                  <div class="select-currency-1" value="$ US">$ US</div>
+                  <div class="select-currency-1" value="&#8381; RUB">&#8381; RUB</div>
+              </div>
+            </div>
             </div>
             <button class="btn btn-nav">
               <img class="icn-nav" src="build/images/search-icn.png" />
@@ -163,13 +173,13 @@
             <button class="btn btn-nav counter">
               <img class="icn-nav" src="build/images/favorite.png" />
               <span class="favorite-counter">
-                  <p class="counter-position">1</p>
+                  <p class="counter-position fav-counter">0</p>
               </span>
             </button>
             <button class="btn btn-nav counter">
               <img class="icn-nav" src="build/images/bag.svg" />
               <span class="products-counter">
-                <p class="counter-position">1</p>
+                <p class="counter-position cart-counter">0</p>
               </span>
             </button>
           </div>
@@ -259,18 +269,10 @@
                 right mix of IoT technology and processes
               </p>
 
-              <button class="slider-btn"><a href="#"> VIEW MORE</a></button>
+              <a href="#" target="_blank"><button class="slider-btn"> VIEW MORE</button></a>
             </div>
             </div>
-            <div class="slider-nav">
-              <img class="dot" src="build/images/slider-control.png" alt="" />
-              <img
-                class="dot active"
-                src="build/images/slider-control-active.png"
-                alt=""
-              />
-              <img class="dot" src="build/images/slider-control.png" alt="" />
-            </div>
+            <div class="dots"></div>
           </div>
         </div>
         <div class="sales-hero">
@@ -323,7 +325,7 @@
                 <h5 class="card-title">$ 799.55</h5>
               </div>
             </div>
-            <div class="card">
+            <div class="card-last">
               <img
                 src="build/images/products/product-2.png"
                 class="card-img-top"
@@ -334,7 +336,7 @@
                   Kristina Dam Oak Table With White Marble Top
                 </p>
                 <a href="#" class="butttns">
-                  <button class="buy-now-btn">
+                  <button class="buy-now-btn btn-add-to-card">
                     <span class="card-2-price">$659.55 </span class="line-between" ><span></span>BUY NOW
                   </button>
                 </a>
@@ -354,6 +356,7 @@
               </div>
             </div>
             <div class="card">
+              
               <img
                 src="build/images/products/product-4.png"
                 class="card-img-top"
@@ -367,7 +370,7 @@
               </div>
             </div>
             <div class="card">
-            
+
             <img
               src="build/images/products/product-5.png"
               class="card-img-top"
@@ -380,17 +383,8 @@
               <h5 class="card-title">$ 659.55</h5>
             </div>
             </div>
-            <div class="card">
-            <div class="card-overlay">
-              <div class="overlay-inner">
-                <button class="btn-add-to-card btn-hover">
-              <img src="build/images/products/add-to-cart-btn.png" alt="add to cart button">
-            </button>
-            <button class="btn-add-to-card btn-hover">
-              <img src="build/images/products/add-to-fav-btn.png" alt="add to favorite button">
-            </button>
-            </div>
-            </div>
+            <div class="card ">
+
             <img
             src="build/images/products/product-6.png"
             class="card-img-top"
@@ -406,6 +400,16 @@
             </div>
             
           <div class="card">
+            <div class="card-overlay">
+              <div class="overlay-inner">
+                <button class="btn-add-to-card btn-hover">
+              <img src="build/images/products/add-to-cart-btn.png" alt="add to cart button">
+            </button>
+            <button class="btn-add-to-fav btn-hover">
+              <img src="build/images/products/add-to-fav-btn.png" alt="add to favorite button">
+            </button>
+            </div>
+            </div>
         <img
           src="build/images/products/product-7.png"
           class="card-img-top"
@@ -418,7 +422,7 @@
           <h5 class="card-title">$ 330.55</h5>
         </div>
           </div>
-            <div class="card ">
+            <div class="card-last">
             <div class="card-overlay-2">
           </div>
       <img
@@ -573,8 +577,8 @@
   <p class="copyright-text">© Copyright 2019. All Rights Reserved.</p>
   <div class="addres-outer" >
     <div class="title-wrapper">
-      <h2 class="title" data-dropdown-btn>CONTACT</h2>
-      <img class="arr" src="build/images/footer/arrow-down.png" alt="open contacts"  data-dropdown-btn>
+      <h2 class="title" data-dropdown-btn-footer>CONTACT</h2>
+      <img class="arr" src="build/images/footer/arrow-down.png" alt="open contacts"  >
     </div>
       <ul>
         <li><p class="hq-addres">Headquarters: <br> 5600, Blvd. des Galeries, Bur 530 Québec, Québec G2K 2H6 </p></li>
@@ -587,8 +591,8 @@
 </div>
 <div class="categories-footer-container ">
   <div class="title-wrapper">
-    <h2 class="title" data-dropdown-btn >CATEGORIES </h2>
-    <img  data-dropdown-btn class="arr"src="build/images/footer/arrow-down.png" alt="open contacts">
+    <h2 class="title" data-dropdown-btn-footer >CATEGORIES </h2>
+    <img   class="arr"src="build/images/footer/arrow-down.png" alt="open contacts">
   </div>
   <ul class="products-categories-inner">
     <ul>
@@ -621,8 +625,8 @@
 </div>
 <div class="about-footer-container">
   <div class="title-wrapper">
-    <h2 class='title ' data-dropdown-btn>ABOUT </h2>
-    <img class="arr"src="build/images/footer/arrow-down.png" alt="open contacts" data-dropdown-btn>
+    <h2 class='title ' data-dropdown-btn-footer>ABOUT </h2>
+    <img class="arr"src="build/images/footer/arrow-down.png" alt="open contacts" >
   </div>
   <ul>
     <li><a href="#page404" target="_blank" class="product-cpl-3">About us</a></li>
