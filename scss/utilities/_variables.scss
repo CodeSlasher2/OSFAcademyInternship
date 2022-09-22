@@ -15,3 +15,9 @@ $gradient-2: linear-gradient(#867cad, #e17a9f);
 $bp-s: 1px;
 $bp-m: 768px;
 $bp-l: 1280px;
+
+$border-side: solid 2px
+  rgba(
+    $color: #7f7f7f,
+    $alpha: 0.3,
+  );

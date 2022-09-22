@@ -15,7 +15,7 @@
 ///
 */
 .hider {
-  display: none;
+  display: none !important;
 }
 
 * {
@@ -455,7 +455,62 @@ body {
 }
 @media (min-width: 769px) and (max-width: 1280px) {
   .nav-inner {
+    margin-top: 25px;
+    width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    position: relative;
+    justify-content: flex-start;
+    background-color: #262a32;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    z-index: 9999999;
+    overflow-block: inherit;
+  }
+  .nav-inner .nav-link {
+    align-self: flex-start;
+    text-align: left;
+    display: block;
+    height: -webkit-fit-content !important;
+    height: -moz-fit-content !important;
+    height: fit-content !important;
+    margin-left: 16px;
+    width: 90%;
+    padding: 12px 0;
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+  }
+  .nav-inner .nav-link:first-child {
+    padding: 0;
+  }
+  .nav-inner .nav-link:first-child:hover {
+    border: none;
+  }
+  .nav-inner .nav-link h1 {
+    width: 100%;
+    height: 100%;
+    padding: 12px 0;
+  }
+  .nav-inner .arrow-down {
+    float: right;
+  }
+  .nav-inner .btn-nav {
     display: none;
+  }
+  .nav-inner .language-btn,
+.nav-inner .currency-btn {
+    display: none;
+    position: relative;
+  }
+  .nav-inner ul {
+    display: none;
+  }
+  .nav-inner h2 {
+    display: block;
+    z-index: 99999999;
   }
 }
 
@@ -718,6 +773,7 @@ body {
 .container-3 {
   max-width: 1170px;
   margin: 0px auto;
+  height: 555px;
 }
 @media (min-width: 769px) and (max-width: 1280px) {
   .container-3 {
@@ -781,6 +837,9 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+  height: 294px;
+  position: relative;
+  overflow: hidden;
 }
 @media (min-width: 769px) and (max-width: 1280px) {
   .featured-products-card-container {
@@ -807,6 +866,11 @@ body {
   height: 109px;
 }
 
+.card-img-top-3 {
+  max-height: 190px;
+  max-width: 270px;
+}
+
 .card-text-3 {
   color: #45413e !important;
   margin: 0px !important;
@@ -816,6 +880,14 @@ body {
   color: #84bc22;
   font-size: 14px;
   font-weight: 800;
+}
+
+.fp-card-slider {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  transition: transform 0.4s ease-in-out;
 }
 
 .banner-container {
@@ -1089,31 +1161,48 @@ body {
   color: #011847;
 }
 
+.butttns {
+  max-height: 265px;
+}
+
 .buy-now-btn {
-  border: solid 2px rgba(127, 127, 127, 0.3);
-  color: #000;
-  font-size: 14px;
-  padding: 12px 24px;
-  border-radius: 35px;
-  width: 190px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-self: center;
-  max-height: 40px;
+  height: 40px;
+  border: solid 2px rgba(127, 127, 127, 0.3);
+  border-radius: 35px;
+  width: 75%;
+  overflow: hidden;
+}
+
+.line-between {
+  background-color: rgba(127, 127, 127, 0.3);
+  height: 120%;
+  width: 2px;
+  align-self: center;
+}
+
+.btn-add-to-card {
+  border: none;
   cursor: pointer;
+  padding: 14px 15px;
+  padding-right: 15px;
 }
-.buy-now-btn:hover {
-  background-color: #84bc22;
-}
-.buy-now-btn:hover .card-2-price {
-  color: #fff;
+.btn-add-to-card:hover {
+  color: #84bc22;
 }
 
 .card-2-price {
+  font-size: 14px;
+  align-self: center;
+  padding: 12px 15px;
+  padding-left: 41px;
   color: #24c36c;
-  display: flex;
-  border-right: solid 2px rgba(127, 127, 127, 0.3);
-  padding-right: 10px;
+}
+.card-2-price:hover {
+  color: #fff;
+  background-color: #24c36c;
 }
 
 .butttns {
@@ -1719,6 +1808,192 @@ body {
   border: solid 3px #fff;
   height: 1rem;
   width: 1rem;
+}
+
+.overlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  z-index: 1;
+  transition: all 0.5s;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 465px;
+  display: flex;
+  align-items: center;
+  /*   background-color:gray; */
+  border-radius: 7px;
+  background-color: #fff;
+  z-index: 105;
+}
+
+.modal__inner {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  background-color: transparent;
+  border: none;
+  gap: 1rem;
+  margin: auto 2rem;
+}
+
+.modal__part {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  position: relative;
+}
+
+.modal__part--text {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 23px;
+}
+
+input {
+  border: solid 2px #45413e;
+  border-radius: 25px;
+  line-height: 20px;
+  text-align: center;
+  padding: 0.7em 0;
+  font-size: 16px;
+}
+
+label {
+  margin-bottom: 0.7em;
+}
+
+.togglePassword {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: absolute;
+  right: 20px;
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.forgot-password {
+  float: right;
+  color: #84bc22;
+  cursor: pointer;
+}
+
+.btn-login {
+  padding: 0.7em 5rem;
+  border-radius: 20px;
+  background-color: #84bc22;
+  font-size: 16px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+.btn-login:hover {
+  color: #84bc22;
+  background-color: #45413e;
+}
+
+.btn-noaccount {
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
+  color: #84bc22;
+  cursor: pointer;
+}
+.btn-noaccount:hover {
+  color: #45413e;
+}
+
+input + span {
+  position: relative;
+}
+
+input + span::before {
+  position: absolute;
+  right: -20px;
+  top: 5px;
+}
+
+input:invalid {
+  border: 2px solid rgb(245, 68, 68);
+}
+
+input:invalid + span::before {
+  content: "aaaaaaaaaaa";
+  color: rgb(245, 68, 68);
+}
+
+input:valid + span::before {
+  content: "aaaaaaaaa";
+  color: #84bc22;
+}
+
+/* Password validation */
+/*  */
+/*  */
+#message {
+  display: none;
+  background: #fff;
+  color: #45413e;
+  position: absolute;
+  left: 105%;
+  bottom: 0;
+  width: 400px;
+  text-align: left;
+  border-radius: 7px;
+}
+#message > h3 {
+  letter-spacing: 2px;
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+}
+#message > p {
+  padding: 1em;
+  font-size: 16px;
+  margin: 0;
+}
+
+.valid {
+  color: #84bc22;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "";
+}
+
+.invalid {
+  color: rgb(245, 68, 68);
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "";
 }
 
 .btn {

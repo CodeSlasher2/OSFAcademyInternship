@@ -124,31 +124,48 @@
   color: $blue-light;
 }
 
+.butttns {
+  max-height: 265px;
+}
+
 .buy-now-btn {
-  border: solid 2px rgba($color: #7f7f7f, $alpha: 0.3);
-  color: #000;
-  font-size: 14px;
-  padding: 12px 24px;
-  border-radius: 35px;
-  width: 190px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-self: center;
-  max-height: 40px;
+  height: 40px;
+  border: $border-side;
+  border-radius: 35px;
+  // padding: 4px 35px;
+  width: 75%;
+  overflow: hidden;
+}
+.line-between {
+  background-color: rgba($color: #7f7f7f, $alpha: 0.3);
+  height: 120%;
+  width: 2px;
+  align-self: center;
+}
+
+.btn-add-to-card {
+  border: none;
   cursor: pointer;
+  padding: 14px 15px;
+  padding-right: 15px;
   &:hover {
-    background-color: $green;
-    .card-2-price {
-      color: $white;
-    }
+    color: $green;
   }
 }
 
 .card-2-price {
+  font-size: 14px;
+  align-self: center;
+  padding: 12px 15px;
+  padding-left: 41px;
   color: #24c36c;
-  display: flex;
-  border-right: solid 2px rgba($color: #7f7f7f, $alpha: 0.3);
-  padding-right: 10px;
+  &:hover {
+    color: $white;
+    background-color: #24c36c;
+  }
 }
 
 .butttns {

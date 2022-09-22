@@ -10,6 +10,7 @@
 .container-3 {
   max-width: 1170px;
   margin: 0px auto;
+  height: 555px;
   @include mq(medium) {
     width: 75%;
   }
@@ -74,6 +75,10 @@
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+  height: 294px;
+  position: relative;
+  overflow: hidden;
+
   @include mq(medium) {
     gap: 1.5rem;
     justify-content: space-around;
@@ -98,6 +103,11 @@
   height: 109px;
 }
 
+.card-img-top-3 {
+  max-height: 190px;
+  max-width: 270px;
+}
+
 .card-text-3 {
   color: $gray !important;
   margin: 0px !important;
@@ -107,4 +117,16 @@
   color: $green;
   font-size: 14px;
   font-weight: 800;
+}
+
+//////
+/// Featured product slider
+///
+
+.fp-card-slider {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  transition: transform 0.4s ease-in-out;
 }
