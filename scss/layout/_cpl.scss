@@ -1,0 +1,165 @@
+.cpl__container {
+  width: 100%;
+  height: 100%;
+  background-color: $bg-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.cpl__title {
+  width: 210px;
+  margin-top: 55px;
+}
+
+.breadcrumbs {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  vertical-align: baseline;
+  line-height: 1.3em;
+  margin-bottom: 30px;
+}
+
+.home-btn {
+  border: none;
+  background-color: transparent;
+  color: $green;
+  margin: 0;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.page-title {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.cpl__filter {
+  background-color: $white;
+  width: 1170px;
+  height: 165px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.filter__part {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding-left: 30px;
+}
+
+.filter__selectmenu {
+  width: 200px;
+  padding: 0.5em;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-left: 20px;
+  border: solid 2px $border-select;
+  border-radius: 30px;
+  appearance: none;
+  background-image: url(../../build/images/cpl/arr-down.png);
+  background-repeat: no-repeat;
+  background-position: 90% 50%;
+  //   text-align: center;
+  //   line-height: 2em;
+}
+
+.filter__part--center,
+.filter__part--right {
+  align-items: flex-end;
+  margin-right: 30px;
+  padding: 0;
+}
+
+select:focus {
+  outline: none; /* Removing default browsers outline on focus */
+}
+
+// select:hover {
+//   background-image: linear-gradient(var(--accentFg), var(--accentFg)),
+//     linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
+//     linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
+//     linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+// }
+
+// select:active {
+//   background-image: linear-gradient(var(--accentFg), var(--accentFg)),
+//     linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
+//     linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
+//     linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+//   color: var(--accentBg);
+//   border-color: var(--accentFg);
+//   background-color: var(--accentFg);
+// }
+
+// select {
+//   position: relative;
+// }
+
+// #price__filter {
+//   left: 100px;
+// }
+
+.cpl-color {
+  display: flex;
+  align-items: center;
+}
+
+.color-picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  margin-left: 20px;
+  width: 200px;
+}
+
+.cpl-white {
+  @include color;
+}
+
+.active-color {
+  border: solid 3px #000;
+}
+
+.cpl-teal {
+  @include color;
+  background-color: #43c0cf;
+}
+
+.cpl-black {
+  @include color;
+  background-color: #3d402f;
+}
+
+.cpl-green {
+  @include color;
+  background-color: #4aaf00;
+}
+
+.cpl-blue {
+  @include color;
+  background-color: #315bbd;
+}
+
+.cpl-orange {
+  @include color;
+  background-color: #ec6115;
+}
+
+.cpl-red {
+  @include color;
+  background-color: #dc041d;
+}
+
+.cpl-special {
+  @include color;
+  background-color: #efead7;
+}

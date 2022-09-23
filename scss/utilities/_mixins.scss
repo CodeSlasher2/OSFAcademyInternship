@@ -121,3 +121,11 @@
 
 @mixin small-dd-container {
 }
+
+@mixin color {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  border: none;
+  background-color: $white;
+}

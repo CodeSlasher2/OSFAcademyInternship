@@ -232,13 +232,13 @@ document.addEventListener("click", checkerCurrency);
 
 const productsOverlay = document.querySelectorAll(".card");
 const cardOverlay = document.querySelector(".card-overlay");
-
-productsOverlay.forEach((card) =>
-  card.addEventListener("mouseover", () => {
-    card.appendChild(cardOverlay);
-  })
-);
-
+if (cardOverlay) {
+  productsOverlay.forEach((card) =>
+    card.addEventListener("mouseover", () => {
+      card.appendChild(cardOverlay);
+    })
+  );
+}
 ///
 //Card + favorite
 ///
