@@ -235,7 +235,7 @@ const cardOverlay = document.querySelector(".card-overlay");
 if (cardOverlay) {
   productsOverlay.forEach((card) =>
     card.addEventListener("mouseover", () => {
-      card.appendChild(cardOverlay);
+      card.append(cardOverlay);
     })
   );
 }
@@ -246,21 +246,28 @@ if (cardOverlay) {
 //ACTIVATE LATER
 //
 
-// const addToCart = document.querySelectorAll(".btn-add-to-card");
-// const cartNumber = document.querySelector(".cart-counter");
-// const addToFav = document.querySelector(".btn-add-to-fav");
-// const favNumber = document.querySelector(".fav-counter");
+const addToCart = document.querySelectorAll(".btn-add-to-card");
+const cartNumber = document.querySelector(".cart-counter");
+const addToFav = document.querySelector(".btn-add-to-fav");
+const favNumber = document.querySelector(".fav-counter");
 
-// addToCart.forEach((btn) =>
-//   btn.addEventListener("click", function () {
-//     cartNumber.textContent = Number(cartNumber.textContent) + 1;
-//   })
-// );
-
-// addToFav.addEventListener("click", () => {
-//   favNumber.textContent = Number(favNumber.textContent) + 1;
-// });
-
+addToCart.forEach((btn) =>
+  btn.addEventListener("click", function () {
+    if (btn.classList.contains("cpl__loadmore")) {
+      if (Number(document.getElementById("number").value) < 0) return;
+      cartNumber.textContent =
+        Number(document.getElementById("number").value) +
+        Number(cartNumber.textContent);
+    } else {
+      cartNumber.textContent = Number(cartNumber.textContent) + 1;
+    }
+  })
+);
+if (addToFav) {
+  addToFav.addEventListener("click", () => {
+    favNumber.textContent = Number(favNumber.textContent) + 1;
+  });
+}
 //
 //
 //Modal window
@@ -283,7 +290,7 @@ togglePassword.addEventListener("click", function (e) {
 var myInput = document.getElementById("password");
 var letter = document.getElementById("letter");
 var special = document.getElementById("special");
-var number = document.getElementById("number");
+var number = document.getElementById("number-modal");
 var length = document.getElementById("length");
 
 // When the user clicks on the password field, show the message box
@@ -405,10 +412,177 @@ const prevSlidefp = function () {
 };
 
 // Slider functionality
-setInterval(nextSlidefp, 5000);
+// setInterval(nextSlidefp, 5000);
 
 ////
 ///Year in footer
 ///
 
 document.querySelector(".year").innerHTML = new Date().getFullYear();
+
+/// // ///
+//
+// color-picker
+const colorBtn = document.querySelectorAll(".cpl__btn");
+const colorBtnContainer = document.querySelector(".color-picker");
+const changer = document.querySelector(".filter__part--left");
+if (changer) {
+  colorBtnContainer.addEventListener("click", (e) => {
+    if (e.target.matches(".cpl__btn")) {
+      colorBtn.forEach((elem) => elem.classList.remove("active-color"));
+      const color = e.target.getAttribute("data-set");
+      const coloring = getComputedStyle(
+        document.documentElement
+      ).getPropertyValue(`--${color}`);
+      console.log(coloring);
+
+      changer.style.setProperty("background-color", coloring);
+      e.target.classList.add("active-color");
+    }
+  });
+}
+
+///
+///
+///Input
+if (document.getElementById("number")) {
+  function increaseValue() {
+    let value = parseInt(document.getElementById("number").value);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? (value = 1) : 0;
+    value++;
+    document.getElementById("number").value = value;
+  }
+
+  function decreaseValue() {
+    let value = parseInt(document.getElementById("number").value);
+    value = isNaN(value)
+      ? (document.getElementById("number").value = 0)
+      : value;
+    value < 1 ? (value = 1) : 0;
+    value--;
+    document.getElementById("number").value = value;
+  }
+
+  document.getElementById("number").addEventListener("change", function (e) {
+    if (this.value < 0) {
+      this.value = "";
+    }
+  });
+}
+
+const readmoreBtn = document.querySelector(".readmore-btn");
+const descriptionText = document.querySelector(".readmore-content");
+if (readmoreBtn) {
+  readmoreBtn.addEventListener("click", (e) => {
+    descriptionText.classList.toggle("readmore-content-active");
+    descriptionText.classList.contains("readmore-content-active")
+      ? (readmoreBtn.textContent = "Read less")
+      : (readmoreBtn.textContent = "Read more");
+  });
+}
+///
+///
+///TAB
+
+const tabcontainer = document.querySelector(".operations__tab-container");
+const tab = document.querySelectorAll(".operations__tab");
+const content = document.querySelectorAll(".operations__content");
+
+if (tabcontainer) {
+  tabcontainer.addEventListener("click", (e) => {
+    if (e.target.closest(".operations__tab")) {
+      tab.forEach((tab) => tab.classList.remove("operations__tab--active"));
+
+      content.forEach((elem) =>
+        elem.classList.remove("operations__content--active")
+      );
+
+      const activeTab = e.target.closest(".operations__tab");
+      activeTab.classList.add("operations__tab--active");
+      // const dataSet = activeTab.getAttribute("data-tab");
+      console.log(activeTab.dataset.tab);
+      document
+        .querySelector(`.operations__content--${activeTab.dataset.tab}`)
+        .classList.add("operations__content--active");
+    }
+  });
+}
+
+const previewContainer = document.querySelector(".preview__container");
+
+const mainPhoto = document.querySelector(".mainfoto");
+const previewFotos = document.querySelectorAll(".preview__foto");
+previewContainer.addEventListener("click", (e) => {
+  console.log(e.target.closest(".preview__foto"));
+  if (e.target.matches("img")) {
+    previewFotos.forEach((foto) => foto.classList.remove("selected"));
+    mainPhoto.setAttribute("src", `${e.target.dataset.setImg}`);
+    e.target.closest(".preview__foto").classList.add("selected");
+  }
+});
+
+///
+///
+///Expander
+const expander = document.querySelector(".expander");
+const fullPage = document.querySelector("#fullpage");
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+var supportsPassive = false;
+try {
+  window.addEventListener(
+    "test",
+    null,
+    Object.defineProperty({}, "passive", {
+      get: function () {
+        supportsPassive = true;
+      },
+    })
+  );
+} catch (e) {}
+
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent =
+  "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
+
+function disableScroll() {
+  window.addEventListener("DOMMouseScroll", preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener("touchmove", preventDefault, wheelOpt); // mobile
+  window.addEventListener("keydown", preventDefaultForScrollKeys, false);
+}
+
+function enableScroll() {
+  window.removeEventListener("DOMMouseScroll", preventDefault, false);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+  window.removeEventListener("touchmove", preventDefault, wheelOpt);
+  window.removeEventListener("keydown", preventDefaultForScrollKeys, false);
+}
+if (expander) {
+  expander.addEventListener("click", function () {
+    const imgURL = mainPhoto.getAttribute("src");
+
+    const topValue = document.documentElement.getBoundingClientRect().top;
+    fullPage.style.backgroundImage = `url(${imgURL})`;
+    fullPage.style.display = "block";
+    fullPage.style.top = `${Math.abs(topValue)}px`;
+
+    disableScroll();
+  });
+
+  document.querySelector("#fullpage").addEventListener("click", (e) => {
+    fullPage.style.display = "none";
+    enableScroll();
+  });
+}

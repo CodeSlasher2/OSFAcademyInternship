@@ -1,6 +1,6 @@
 .featured-products {
   width: 100%;
-  background-color: $blue;
+  background-color: $main;
   padding-top: 45px;
   @include mq(small) {
     display: none;
@@ -12,7 +12,7 @@
   margin: 0px auto;
   height: 555px;
   @include mq(medium) {
-    width: 75%;
+    width: 90%;
   }
 }
 
@@ -54,7 +54,7 @@
     &:hover {
       background-color: rgba($color: #fff, $alpha: 1);
       .arrow {
-        color: $blue;
+        color: $main;
       }
     }
   }
@@ -87,7 +87,7 @@
 
 .card-3 {
   width: 270px;
-  height: 296px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   border-radius: 7px;
@@ -129,4 +129,12 @@
   display: flex;
   justify-content: space-between;
   transition: transform 0.4s ease-in-out;
+  gap: 15px;
 }
+
+// .card-card {
+//   > img {
+//     max-width: 170px;
+//     max-height: 119px;
+//   }
+// }

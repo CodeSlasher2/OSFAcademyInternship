@@ -2,7 +2,7 @@
   width: 100%;
   // margin: 0 auto;
   height: 385px;
-  background-color: $blue;
+  background-color: $main;
   color: $white;
   display: none;
   position: absolute;
@@ -63,6 +63,12 @@
     ul {
       display: none;
       margin-left: 20px;
+    }
+  }
+  @include mq(medium) {
+    top: 75px;
+    .container-dropdown {
+      width: 90%;
     }
   }
 }
