@@ -15,9 +15,10 @@ const productButton = document.querySelector(".products");
 //Mobile nav opener
 hamburgerMenu.addEventListener("click", function (e) {
   e.preventDefault();
-  hamburgerMenu.classList.add("open");
-  mobileNav.classList.add("active");
+  hamburgerMenu.classList.toggle("open");
+  mobileNav.classList.toggle("active");
   mobileNav.classList.remove("hider");
+  // if()
 });
 
 //
@@ -51,18 +52,20 @@ document.addEventListener("click", function (e) {
 //Nav closer
 //
 const header = document.querySelector("header");
-let prev = window.pageYOffset;
-window.addEventListener("scroll", function () {
-  let current = window.pageYOffset;
-  console.log(prev, current);
-  if (prev < current) {
-    mobileNav.classList.add("hider");
-    hamburgerMenu.classList.remove("open");
-  }
+if (window.innerWidth < 768) {
+  let prev = window.pageYOffset;
+  window.addEventListener("scroll", function () {
+    let current = window.pageYOffset;
+    console.log(prev, current);
+    if (prev < current) {
+      mobileNav.classList.add("hider");
+      mobileNav.classList.remove("active");
+      hamburgerMenu.classList.remove("open");
+    }
 
-  prev = current;
-});
-
+    prev = current;
+  });
+}
 //
 //Nav 3rd level controler
 
@@ -367,11 +370,13 @@ const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove("hider");
   btnCloseModal.classList.remove("hider");
+  disableScroll();
 };
 
 const closeModal = function () {
   modal.classList.add("hider");
   btnCloseModal.classList.add("hider");
+  enableScroll();
 };
 
 btnOpenModal.addEventListener("click", openModal);

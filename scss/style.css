@@ -466,9 +466,6 @@ body {
   .nav-inner .arrow-down {
     float: right;
   }
-  .nav-inner .btn-nav {
-    display: none;
-  }
   .nav-inner .language-btn,
 .nav-inner .currency-btn {
     display: none;
@@ -480,6 +477,71 @@ body {
   .nav-inner h2 {
     display: block;
     z-index: 99999999;
+  }
+}
+
+.nav-btn-container {
+  display: flex;
+}
+@media (min-width: 1px) and (max-width: 768px) {
+  .nav-btn-container {
+    display: flex !important;
+    justify-content: center;
+    gap: 33px;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 55px;
+    bottom: 0%;
+    left: 0;
+    background-color: #262a32;
+    margin: 0%;
+  }
+  .nav-btn-container .btn-nav {
+    background-color: transparent;
+    width: 35px;
+  }
+  .nav-btn-container .btn {
+    margin: 0;
+  }
+  .nav-btn-container .btn > img {
+    filter: brightness(4);
+  }
+  .nav-btn-container .products-counter,
+.nav-btn-container .favorite-counter {
+    background-color: #262a32;
+    width: 19px;
+    height: 19px;
+  }
+  .nav-btn-container .counter-position {
+    background-color: #262a32;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .nav-btn-container {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+  .nav-btn-container {
+    height: 60px;
+    width: 30%;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+  }
+  .nav-btn-container .btn-nav {
+    margin: 0;
+  }
+  .nav-btn-container .counter-position {
+    position: relative;
   }
 }
 
@@ -1833,6 +1895,12 @@ body {
   background-color: #fff;
   z-index: 105;
 }
+@media (min-width: 1px) and (max-width: 768px) {
+  .modal {
+    width: 100%;
+    height: 60%;
+  }
+}
 
 .modal__inner {
   width: 100%;
@@ -1950,7 +2018,7 @@ input:valid + span::before {
 /*  */
 #message {
   display: none;
-  background: #fff;
+  background-color: #fff;
   color: #45413e;
   position: absolute;
   left: 105%;
@@ -1970,6 +2038,22 @@ input:valid + span::before {
   padding: 1em;
   font-size: 16px;
   margin: 0;
+}
+@media (min-width: 1px) and (max-width: 768px) {
+  #message {
+    width: 100%;
+    left: 0;
+    top: 100%;
+    position: fixed;
+    height: 100px;
+    background-color: #fff;
+  }
+  #message > p {
+    padding: 0;
+  }
+  #message > h3 {
+    margin: 0;
+  }
 }
 
 .valid {
