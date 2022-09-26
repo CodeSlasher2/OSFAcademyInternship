@@ -15,8 +15,9 @@ const productButton = document.querySelector(".products");
 //Mobile nav opener
 hamburgerMenu.addEventListener("click", function (e) {
   e.preventDefault();
-  hamburgerMenu.classList.toggle("open");
-  mobileNav.classList.toggle("active");
+  hamburgerMenu.classList.add("open");
+  mobileNav.classList.add("active");
+  mobileNav.classList.remove("hider");
 });
 
 //
@@ -39,8 +40,8 @@ document.addEventListener("click", function (e) {
       saleButton.classList.contains("active-ul")) &&
     !navDropdown.classList.contains("active")
   ) {
-    const ActiveUlToggler = document.querySelectorAll(".active-ul");
-    ActiveUlToggler.forEach((elem) => elem.classList.remove("active-ul"));
+    const activeUlToggler = document.querySelectorAll(".active-ul");
+    activeUlToggler.forEach((elem) => elem.classList.remove("active-ul"));
     productButton.classList.remove("active-ul");
     saleButton.classList.remove("active-ul");
   }
@@ -49,6 +50,18 @@ document.addEventListener("click", function (e) {
 //
 //Nav closer
 //
+const header = document.querySelector("header");
+let prev = window.pageYOffset;
+window.addEventListener("scroll", function () {
+  let current = window.pageYOffset;
+  console.log(prev, current);
+  if (prev < current) {
+    mobileNav.classList.add("hider");
+    hamburgerMenu.classList.remove("open");
+  }
+
+  prev = current;
+});
 
 //
 //Nav 3rd level controler
@@ -125,7 +138,7 @@ const goToSlide = function (slide) {
   });
 };
 
-if (document.querySelector(".dots")) {
+if (slider) {
   goToSlide(0);
   activeDot(0);
 
@@ -513,15 +526,17 @@ const previewContainer = document.querySelector(".preview__container");
 
 const mainPhoto = document.querySelector(".mainfoto");
 const previewFotos = document.querySelectorAll(".preview__foto");
-previewContainer.addEventListener("click", (e) => {
-  console.log(e.target.closest(".preview__foto"));
-  if (e.target.matches("img")) {
-    previewFotos.forEach((foto) => foto.classList.remove("selected"));
-    mainPhoto.setAttribute("src", `${e.target.dataset.setImg}`);
-    e.target.closest(".preview__foto").classList.add("selected");
-  }
-});
 
+if (mainPhoto) {
+  previewContainer.addEventListener("click", (e) => {
+    console.log(e.target.closest(".preview__foto"));
+    if (e.target.matches("img")) {
+      previewFotos.forEach((foto) => foto.classList.remove("selected"));
+      mainPhoto.setAttribute("src", `${e.target.dataset.setImg}`);
+      e.target.closest(".preview__foto").classList.add("selected");
+    }
+  });
+}
 ///
 ///
 ///Expander
@@ -586,3 +601,82 @@ if (expander) {
     enableScroll();
   });
 }
+
+///
+///
+///Slider for small screen
+
+const currentWidth = document.documentElement.getBoundingClientRect().width;
+const cardContainer = document.querySelector(".card-container");
+const cards = document.querySelectorAll(".card");
+console.log(currentWidth);
+const dotContainerPi = document.querySelector(".dots__pi");
+const dotPi = document.querySelector(".dots__dot--pi");
+
+///////////////////////BUG
+///////////////////////
+//cards.forEach((card) => (card.style.transform = "none"));
+
+// window.removeEventListener("resize", widthChecker);
+const widthChecker = function () {
+  if (this.width < 768 && !dotPi) {
+    createDots(cards, dotContainerPi);
+  } else if (this.width > 768) {
+    cards.forEach((card) => (card.style.transform = "none"));
+  }
+};
+
+// const goToSlideChecker = function () {
+//   if (this.width < 768 && !dotPi) {
+//     createDots(cards, dotContainerPi);
+//   } else if (this.width > 768) {
+//     cards.forEach((card) => (card.style.transform = "none"));
+//   }
+// };
+
+window.addEventListener("resize", widthChecker);
+if (dotContainerPi && window.innerWidth < 768) {
+  const createDots = function (slides, dotContainer) {
+    slides.forEach((_, i) => {
+      dotContainer.insertAdjacentHTML(
+        "beforeend",
+        `<button class="dots__dot dots__dot--pi" data-slide="${i}"></button>`
+      );
+    });
+  };
+
+  createDots(cards, dotContainerPi);
+
+  const activeDotPi = function (slide) {
+    document
+      .querySelectorAll(".dots__dot--pi")
+      .forEach((dot) => dot.classList.remove("dots__dot--active-2"));
+    document
+      .querySelector(`.dots__dot--pi[data-slide='${slide}']`)
+      .classList.add("dots__dot--active-2");
+  };
+
+  const goToSlide = function (slide, elem) {
+    elem.forEach((s, i) => {
+      s.style.transform = `translateX(${100 * (i - slide)}%)`;
+    });
+  };
+
+  activeDotPi(0);
+  window.addEventListener("resize", widthChecker);
+  goToSlide(0, cards);
+
+  dotContainerPi.addEventListener("click", (e) => {
+    if (e.target.classList.contains("dots__dot--pi")) {
+      const { slide } = e.target.dataset;
+      goToSlide(slide, cards);
+      activeDotPi(slide);
+    }
+  });
+}
+
+// window.addEventListener("resize", widthChecker);
+
+/////////
+/////////PDP slider
+/////////

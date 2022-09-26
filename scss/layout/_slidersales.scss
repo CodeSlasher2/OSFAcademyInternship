@@ -298,3 +298,13 @@
   height: 1rem;
   width: 1rem;
 }
+
+.dots__dot--active-2 {
+  @extend .dots__dot--active;
+  // @include mq(medium) {
+  //   // display: none;
+  // }
+  // @include mq(large) {
+  //   display: none;
+  // }
+}

@@ -363,6 +363,7 @@ body {
   justify-content: flex-end;
   height: 60px;
   width: 1170px;
+  overflow: visible;
 }
 @media (min-width: 1px) and (max-width: 768px) {
   .nav {
@@ -376,7 +377,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
-    overflow: auto;
+    overflow: scroll;
+    height: 500px !important;
     display: none;
   }
   .nav .nav-link {
@@ -436,7 +438,6 @@ body {
     gap: 1rem;
     align-items: center;
     z-index: 9999999;
-    overflow-block: inherit;
   }
   .nav-inner .nav-link {
     align-self: flex-start;
@@ -460,7 +461,6 @@ body {
   }
   .nav-inner .nav-link h1 {
     width: 100%;
-    height: 100%;
     padding: 12px 0;
   }
   .nav-inner .arrow-down {
@@ -480,6 +480,19 @@ body {
   .nav-inner h2 {
     display: block;
     z-index: 99999999;
+  }
+}
+
+.products-categories-inner {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  overflow: visible;
+}
+@media (min-width: 1px) and (max-width: 768px) {
+  .products-categories-inner {
+    overflow: scroll;
+    height: 300px;
   }
 }
 
@@ -1019,6 +1032,7 @@ body {
   width: 100%;
   background-color: #262a32;
   padding-top: 50px;
+  position: relative;
 }
 @media (min-width: 1px) and (max-width: 768px) {
   .popular-items-container .container-2 {
@@ -1030,9 +1044,14 @@ body {
     height: 365px;
     width: 270px;
     align-self: center;
+    overflow: hidden;
+  }
+  .popular-items-container .card-last {
+    display: none;
   }
   .popular-items-container .card, .popular-items-container .card-last {
     position: absolute;
+    transition: all 0.2s ease-in-out;
   }
   .popular-items-container .btn-load-more {
     display: none;
@@ -1779,7 +1798,7 @@ body {
   margin: auto 0;
 }
 
-.dots__dot--active {
+.dots__dot--active, .dots__dot--active-2 {
   background-color: transparent;
   opacity: 1;
   border: solid 3px #fff;
@@ -2681,6 +2700,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .operations__tab:hover {
   cursor: pointer;
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .operations__tab {
+    padding: 20px 20px;
+  }
 }
 
 .operations__tab--active {

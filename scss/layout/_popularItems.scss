@@ -2,6 +2,7 @@
   width: 100%;
   background-color: $main;
   padding-top: 50px;
+  position: relative;
   // display: none;
   @include mq(small) {
     .container-2 {
@@ -13,9 +14,14 @@
       height: 365px;
       width: 270px;
       align-self: center;
+      overflow: hidden;
+    }
+    .card-last {
+      display: none;
     }
     .card {
       position: absolute;
+      transition: all 0.2s ease-in-out;
     }
 
     .btn-load-more {
