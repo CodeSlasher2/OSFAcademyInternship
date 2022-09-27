@@ -141,7 +141,7 @@ a {
   color: #fff;
   display: none;
   position: absolute;
-  top: 78px;
+  top: 75px;
   left: 0px;
   z-index: 1;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -296,6 +296,9 @@ body {
 
 .header {
   width: 100%;
+  position: fixed;
+  z-index: 5000;
+  background-color: #fff;
 }
 @media (min-width: 1px) and (max-width: 768px) {
   .header .menu {
@@ -422,7 +425,7 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: 15px;
-  height: 60px;
+  height: 57px;
 }
 @media (min-width: 1px) and (max-width: 768px) {
   .nav-inner {
@@ -864,6 +867,7 @@ body {
 }
 .featured-products-nav button:hover {
   background-color: white;
+  cursor: pointer;
 }
 .featured-products-nav button:hover .arrow {
   color: #262a32;
@@ -1556,6 +1560,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 75px;
 }
 @media (min-width: 1px) and (max-width: 768px) {
   .container-hero {
@@ -2003,13 +2008,19 @@ input:invalid {
   border: 2px solid rgb(245, 68, 68);
 }
 
+.submit:invalid {
+  color: 2px solid rgb(245, 68, 68);
+}
+
+.submit,
 input:invalid + span::before {
-  content: "aaaaaaaaaaa";
+  content: "";
   color: rgb(245, 68, 68);
 }
 
+.submit,
 input:valid + span::before {
-  content: "aaaaaaaaa";
+  content: "";
   color: #84bc22;
 }
 
@@ -2872,4 +2883,120 @@ input[type=number]::-webkit-outer-spin-button {
 .btn {
   border: none;
   background-color: #fff;
+}
+
+.release__modal {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  border: solid 4px hsla(0deg, 0%, 50%, 0.3);
+  z-index: 9999999;
+  background-color: #fff;
+  color: #45413e;
+}
+
+.release__modal--part {
+  margin: 0;
+}
+.release__modal--part > h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+.release__modal--part > p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.2em;
+}
+
+.timer {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 10px 5px;
+}
+
+.timer__item {
+  border: solid 3px #84bc22;
+  border-radius: 50%;
+  -webkit-mask-box-image: 5;
+          mask-border: 5;
+  padding: 12px;
+  font-size: 48px;
+  font-weight: 800;
+  width: 110px;
+  height: 110px;
+  line-height: 110px;
+}
+
+.months {
+  font-size: 18px;
+}
+
+.release__opener {
+  position: absolute;
+}
+
+.fa-clock {
+  color: #84bc22;
+}
+
+.clock__wrap {
+  position: fixed;
+  left: 0;
+  top: 30%;
+  background-color: #262a32;
+  height: 6em;
+  width: 3em;
+  border-radius: 0 25px 25px 0;
+  border: solid 3px #84bc22;
+  border-left: none;
+  display: flex;
+  align-items: center;
+}
+.clock__wrap:hover {
+  background-color: #84bc22;
+  cursor: pointer;
+}
+.clock__wrap:hover .fa-clock {
+  color: #262a32;
+}
+
+.email__input--timer {
+  width: 60%;
+  display: flex;
+  position: relative;
+}
+.email__input--timer > button {
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translateY(-50%);
+  border: 2px solid #84bc22;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 28px;
+  background-color: transparent;
+}
+.email__input--timer > button:hover {
+  cursor: pointer;
+}
+
+#input__timer {
+  width: 30%;
+  flex-grow: 2;
 }/*# sourceMappingURL=style.css.map */

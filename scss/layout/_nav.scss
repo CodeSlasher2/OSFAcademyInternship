@@ -7,6 +7,9 @@ body {
 
 .header {
   width: 100%;
+  position: fixed;
+  z-index: 5000;
+  background-color: $white;
   @include mq(small) {
     .menu {
       position: fixed;
@@ -135,7 +138,7 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: 15px;
-  height: 60px;
+  height: 57px;
 
   @include mq(small) {
     // width: 90%;

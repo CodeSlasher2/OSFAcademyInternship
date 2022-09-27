@@ -53,6 +53,7 @@
     height: 29px;
     &:hover {
       background-color: rgba($color: #fff, $alpha: 1);
+      cursor: pointer;
       .arrow {
         color: $main;
       }

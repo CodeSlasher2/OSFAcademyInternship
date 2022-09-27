@@ -286,8 +286,9 @@ if (addToFav) {
 }
 //
 //
-//Modal window
+//Modal windows
 //
+///MOdal  log in
 const togglePassword = document.querySelector(".togglePassword");
 const password = document.querySelector("#password");
 
@@ -376,6 +377,7 @@ const openModal = function (e) {
 const closeModal = function () {
   modal.classList.add("hider");
   btnCloseModal.classList.add("hider");
+  timerModal.classList.add("hider");
   enableScroll();
 };
 
@@ -387,6 +389,17 @@ btnCloseModal.addEventListener("click", closeModal);
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && !modal.classList.contains("hidden")) {
     closeModal();
+  }
+});
+
+////MODAL timer
+const timerToggler = document.querySelector(".clock__wrap");
+const timerModal = document.querySelector(".release__modal");
+timerToggler.addEventListener("click", (e) => {
+  if (e.target.closest(".clock__wrap")) {
+    timerModal.classList.remove("hider");
+    btnCloseModal.classList.remove("hider");
+    disableScroll();
   }
 });
 
@@ -683,5 +696,98 @@ if (dotContainerPi && window.innerWidth < 768) {
 // window.addEventListener("resize", widthChecker);
 
 /////////
-/////////PDP slider
+/////////json post
 /////////
+
+const cardLoad = document.querySelectorAll(".card-load");
+const cardText = document.querySelector(".card-text");
+const cardRate = document.querySelector(".card-title");
+
+class Card {
+  constructor(cardJson) {
+    this.src = cardJson.firstElementChild.getAttribute("src");
+    this.cardtext = cardJson.querySelector(".card-text").innerHTML;
+    this.cardtitle = cardJson.querySelector(".card-title").innerHTML;
+  }
+}
+
+// let keyvalue='load1'
+const jsonFull = {};
+const load = [];
+cardLoad.forEach(function (card, i) {
+  load[i] = new Card(card);
+  jsonFull.load = load;
+});
+
+console.log(jsonFull);
+
+// let res = fetch("index.html", {
+//   // fake API endpoint
+//   method: "POST",
+//   body: JSON.stringify(jsonFull),
+//   mode: "cors",
+//   headers: {
+//     "Content-Type": "cards/json",
+//   },
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data))
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+// const config = {
+//   method: "POST",
+//   headers: { "Content-Type": "application/json" },
+//   body: JSON.stringify(data),
+// };
+// const urlPost = "index.html";
+
+// function createPost(data) {
+//   fetch(url, config);
+//   data = { title, body };
+
+//   const config = {
+//     method: "POST",
+
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+
+//     body: JSON.stringify(data),
+//   };
+
+//   return fetch("http://localhost:3000/posts", config).then(function (response) {
+//     return response.json();
+//   });
+// }
+
+//////////
+//////////
+//////////TIMER
+let releaseDate = new Date(2022, 8, 30, 23, 59).getTime();
+const timerItems = document.querySelectorAll(".timer__item");
+
+const timerUpdate = function () {
+  let currentDate = new Date().getTime();
+  let timeLeft = releaseDate - currentDate;
+  let months = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 30));
+  let days = Math.floor(
+    (timeLeft % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
+  );
+  let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  const arr = [months, days, hours, minutes, seconds];
+
+  timerItems.forEach((item, i) => {
+    item.innerHTML = arr[i] < 10 ? "0" + arr[i] : arr[i];
+  });
+
+  if (timeLeft < 0) {
+    clearInterval(x);
+    document.getElementById("timer-timer").innerHTML = "EXPIRED";
+  }
+};
+timerUpdate();
+setInterval(timerUpdate, 1000);

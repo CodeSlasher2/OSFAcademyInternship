@@ -129,14 +129,19 @@ input + span::before {
 input:invalid {
   border: 2px solid rgb(245, 68, 68);
 }
+.submit:invalid {
+  color: 2px solid rgb(245, 68, 68);
+}
 
+.submit,
 input:invalid + span::before {
-  content: "aaaaaaaaaaa";
+  content: "";
   color: rgb(245, 68, 68);
 }
 
+.submit,
 input:valid + span::before {
-  content: "aaaaaaaaa";
+  content: "";
   color: $green;
 }
 
