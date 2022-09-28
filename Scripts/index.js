@@ -248,12 +248,16 @@ document.addEventListener("click", checkerCurrency);
 
 const productsOverlay = document.querySelectorAll(".card");
 const cardOverlay = document.querySelector(".card-overlay");
-if (cardOverlay) {
-  productsOverlay.forEach((card) =>
+const overlayChecker = function (cards) {
+  cards.forEach((card) =>
     card.addEventListener("mouseover", () => {
       card.append(cardOverlay);
     })
   );
+};
+
+if (cardOverlay) {
+  overlayChecker(productsOverlay);
 }
 ///
 //Card + favorite
@@ -264,25 +268,43 @@ if (cardOverlay) {
 
 const addToCart = document.querySelectorAll(".btn-add-to-card");
 const cartNumber = document.querySelector(".cart-counter");
-const addToFav = document.querySelector(".btn-add-to-fav");
+
 const favNumber = document.querySelector(".fav-counter");
 
-addToCart.forEach((btn) =>
-  btn.addEventListener("click", function () {
-    if (btn.classList.contains("cpl__loadmore")) {
-      if (Number(document.getElementById("number").value) < 0) return;
-      cartNumber.textContent =
-        Number(document.getElementById("number").value) +
-        Number(cartNumber.textContent);
-    } else {
-      cartNumber.textContent = Number(cartNumber.textContent) + 1;
-    }
-  })
-);
-if (addToFav) {
-  addToFav.addEventListener("click", () => {
-    favNumber.textContent = Number(favNumber.textContent) + 1;
+const btnChecker = function () {
+  const addToCart = document.querySelectorAll(".btn-add-to-card");
+  addToCart.forEach((btn) =>
+    btn.addEventListener("click", function () {
+      if (btn.classList.contains("cpl__loadmore")) {
+        if (Number(document.getElementById("number").value) < 0) return;
+        cartNumber.textContent =
+          Number(document.getElementById("number").value) +
+          Number(cartNumber.textContent);
+      } else {
+        cartNumber.textContent = Number(cartNumber.textContent) + 1;
+      }
+    })
+  );
+};
+const addToFavChecker = function () {
+  const addToFav = document.querySelectorAll(".btn-add-to-fav");
+  addToFav.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      favNumber.textContent = Number(favNumber.textContent) + 1;
+    });
   });
+};
+
+// addToCart.forEach((btn) => btn.addEventListener("click"));
+if (addToCart) {
+  const addToFavChecker = function () {
+    const addToFav = document.querySelector(".btn-add-to-fav");
+    addToFav.addEventListener("click", () => {
+      favNumber.textContent = Number(favNumber.textContent) + 1;
+    });
+  };
+  addToFavChecker();
+  btnChecker();
 }
 //
 //
@@ -299,6 +321,32 @@ togglePassword.addEventListener("click", function (e) {
 
   this.classList.toggle("bi-eye");
 });
+
+/////
+/////
+/////EMAIL VALIDATION
+/////
+const email = document.querySelector("#userEmail");
+let loginticket = 0;
+const validateEmail = (email) => {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
+};
+
+const validate = () => {
+  const emailText = email.value;
+  console.log(emailText);
+
+  if (validateEmail(emailText)) {
+    email.style.border = "2px solid #84bc22";
+    loginticket = 1;
+  } else {
+    email.style.border = "2px solid red";
+  }
+};
+
+email.addEventListener("input", validate);
 
 //////
 //////
@@ -359,6 +407,15 @@ myInput.onkeyup = function () {
     length.classList.add("invalid");
   }
 };
+const allValidators = document.querySelectorAll(".pass__validator");
+
+password.addEventListener("input", () => {
+  // console.log(1);
+
+  [...allValidators].every((elem) => elem.classList.contains("valid"))
+    ? (password.style.border = "2px solid #84bc22")
+    : (password.style.border = "2px solid red");
+});
 
 ///
 ///modal opening close
@@ -366,10 +423,13 @@ myInput.onkeyup = function () {
 const btnOpenModal = document.querySelector(".openmodal");
 const btnCloseModal = document.querySelector(".overlay-blur");
 const modal = document.querySelector(".modal");
+const login = document.querySelector(".btn-login");
 
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove("hider");
+  const top = document.documentElement.getBoundingClientRect().top;
+  modal.style.top = `calc(${Math.abs(top)}px + 50%)`;
   btnCloseModal.classList.remove("hider");
   disableScroll();
 };
@@ -382,9 +442,16 @@ const closeModal = function () {
 };
 
 btnOpenModal.addEventListener("click", openModal);
+btnCloseModal.addEventListener("click", closeModal);
 
-btnCloseModal.addEventListener("click", closeModal);
-btnCloseModal.addEventListener("click", closeModal);
+login.addEventListener("click", (e) => {
+  if (
+    [...allValidators].every((elem) => elem.classList.contains("valid")) &&
+    loginticket === 1
+  ) {
+    closeModal();
+  }
+});
 
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && !modal.classList.contains("hidden")) {
@@ -395,14 +462,17 @@ document.addEventListener("keydown", function (e) {
 ////MODAL timer
 const timerToggler = document.querySelector(".clock__wrap");
 const timerModal = document.querySelector(".release__modal");
-timerToggler.addEventListener("click", (e) => {
-  if (e.target.closest(".clock__wrap")) {
-    timerModal.classList.remove("hider");
-    btnCloseModal.classList.remove("hider");
-    disableScroll();
-  }
-});
-
+if (timerToggler) {
+  timerToggler.addEventListener("click", (e) => {
+    if (e.target.closest(".clock__wrap")) {
+      timerModal.classList.remove("hider");
+      const top = document.documentElement.getBoundingClientRect().top;
+      timerModal.style.top = `calc(${Math.abs(top)}px + 50%)`;
+      btnCloseModal.classList.remove("hider");
+      disableScroll();
+    }
+  });
+}
 ////
 ////Featured products slider
 ////
@@ -560,7 +630,7 @@ if (mainPhoto) {
 ///Expander
 const expander = document.querySelector(".expander");
 const fullPage = document.querySelector("#fullpage");
-
+var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 function preventDefault(e) {
   e.preventDefault();
 }
@@ -712,82 +782,165 @@ class Card {
 }
 
 // let keyvalue='load1'
-const jsonFull = {};
-const load = [];
-cardLoad.forEach(function (card, i) {
-  load[i] = new Card(card);
-  jsonFull.load = load;
-});
+// const jsonFull = {};
+// const load = [];
+// cardLoad.forEach(function (card, i) {
+//   load[i] = new Card(card);
+//   jsonFull.load = load;
+// });
 
-console.log(JSON.stringify(jsonFull));
+// console.log(JSON.stringify(jsonFull));
 
-// let res = fetch("index.html", {
-//   // fake API endpoint
-//   method: "POST",
-//   body: JSON.stringify(jsonFull),
-//   mode: "cors",
-//   headers: {
-//     "Content-Type": "cards/json",
-//   },
-// })
-//   .then((res) => res.json())
-//   .then((data) => console.log(data))
-//   .catch((err) => {
-//     console.error(err);
-//   });
+const loadMoreBtn = document.querySelector(".btn-load-more");
+// const cardContainer = document.querySelector(".card-container");
 
-// const config = {
-//   method: "POST",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify(data),
-// };
-// const urlPost = "index.html";
-
-// function createPost(data) {
-//   fetch(url, config);
-//   data = { title, body };
-
-//   const config = {
-//     method: "POST",
-
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-
-//     body: JSON.stringify(data),
-//   };
-
-//   return fetch("http://localhost:3000/posts", config).then(function (response) {
-//     return response.json();
-//   });
-// }
-
-//////////
-//////////
-//////////TIMER
-let releaseDate = new Date(2022, 8, 30, 23, 59).getTime();
-const timerItems = document.querySelectorAll(".timer__item");
-
-const timerUpdate = function () {
-  let currentDate = new Date().getTime();
-  let timeLeft = releaseDate - currentDate;
-  let months = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 30));
-  let days = Math.floor(
-    (timeLeft % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
-  );
-  let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-  const arr = [months, days, hours, minutes, seconds];
-
-  timerItems.forEach((item, i) => {
-    item.innerHTML = arr[i] < 10 ? "0" + arr[i] : arr[i];
-  });
-
-  if (timeLeft < 0) {
-    clearInterval(x);
-    document.getElementById("timer-timer").innerHTML = "EXPIRED";
-  }
+const errHandler = function (msg) {
+  loadMoreBtn.textContent = `${msg}`;
 };
-timerUpdate();
-setInterval(timerUpdate, 1000);
+
+const requestFunction = function () {
+  fetch("https://api.jsonbin.io/v3/b/6333e6455c146d63caabf645", {
+    method: "GET",
+    headers: {
+      "X-Master-Key":
+        "$2b$10$.zf8ZL3lYRlP2KIBZ5VpU./cSIf3yph/ysfTuBEfbcch6TMApHYRK",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => adderHTML(data.record.load))
+    //
+    .catch((err) => {
+      console.error(`${err}`);
+      errHandler(`Something went wrong...${err.message}`);
+    })
+    .finally(() => {
+      btnChecker();
+      addToFavChecker();
+    });
+  // overlayChecker(productsOverlay);
+};
+if (loadMoreBtn) {
+  loadMoreBtn.addEventListener("click", requestFunction);
+}
+
+const adderHTML = function (data) {
+  data.forEach((element) => {
+    cardContainer.insertAdjacentHTML(
+      "beforeend",
+      `<div class="card card-load">
+      <div class="card-overlay">
+      <div class="overlay-inner">
+        <button class="btn-add-to-card btn-hover">
+          <img
+            src="build/images/products/add-to-cart-btn.png"
+            alt="add to cart button"
+          />
+        </button>
+        <button class="btn-add-to-fav btn-hover">
+          <img
+            src="build/images/products/add-to-fav-btn.png"
+            alt="add to favorite button"
+          />
+        </button>
+      </div>
+    </div>
+      <img
+        src="${element.src}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <p class="card-text">${element.cardtext}</p>
+        <h5 class="card-title">${element.cardtitle}</h5>
+      </div>
+    </div>`
+    );
+  });
+};
+
+////
+////
+/////COOOKIE
+
+// set cookie according to you
+var cookieName = "Accepted";
+var cookieValue = "1";
+var cookieExpireDays = 30;
+// when users click accept button
+
+// let acceptCookie = document.getElementById("acceptCookie");
+// acceptCookie.onclick = function () {
+//   createCookie(cookieName, cookieValue, cookieExpireDays);
+// };
+// // function to set cookie in web browser
+// let createCookie = function (cookieName, cookieValue, cookieExpireDays) {
+//   let currentDate = new Date();
+//   currentDate.setTime(
+//     currentDate.getTime() + cookieExpireDays * 24 * 60 * 60 * 1000
+//   );
+//   let expires = "expires=" + currentDate.toGMTString();
+//   document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+//   if (document.cookie) {
+//     document.getElementById("cookiePopup").style.display = "none";
+//   } else {
+//     alert(
+//       "Unable to set cookie. Please allow all cookies site from cookie setting of your browser"
+//     );
+//   }
+// };
+// // get cookie from the web browser
+// let getCookie = function (cookieName) {
+//   let name = cookieName + "=";
+//   let decodedCookie = decodeURIComponent(document.cookie);
+//   let ca = decodedCookie.split(";");
+//   for (let i = 0; i < ca.length; i++) {
+//     let c = ca[i];
+//     while (c.charAt(0) == " ") {
+//       c = c.substring(1);
+//     }
+//     if (c.indexOf(name) == 0) {
+//       return c.substring(name.length, c.length);
+//     }
+//   }
+//   return "";
+// };
+// // check cookie is set or not
+// let checkCookie = function () {
+//   let check = getCookie(cookieName);
+//   if (check == "") {
+//     document.getElementById("cookiePopup").style.display = "block";
+//   } else {
+//     document.getElementById("cookiePopup").style.display = "none";
+//   }
+// };
+// checkCookie();
+
+// //////////
+// //////////
+// //////////TIMER
+// let releaseDate = new Date(2022, 8, 30, 23, 59).getTime();
+// const timerItems = document.querySelectorAll(".timer__item");
+
+// const timerUpdate = function () {
+//   let currentDate = new Date().getTime();
+//   let timeLeft = releaseDate - currentDate;
+//   let months = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 30));
+//   let days = Math.floor(
+//     (timeLeft % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
+//   );
+//   let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//   let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+//   let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+//   const arr = [months, days, hours, minutes, seconds];
+
+//   timerItems.forEach((item, i) => {
+//     item.innerHTML = arr[i] < 10 ? "0" + arr[i] : arr[i];
+//   });
+
+//   if (timeLeft < 0) {
+//     clearInterval(x);
+//     document.getElementById("timer-timer").innerHTML = "EXPIRED";
+//   }
+// };
+// timerUpdate();
+// setInterval(timerUpdate, 1000);

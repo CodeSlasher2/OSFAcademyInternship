@@ -991,7 +991,12 @@
         <h1 class="modal__part modal__part--text">Sign in</h1>
         <div class="modal__part modal__part--email">
           <label for="email">Email</label>
-          <input type="email" placeholder="Enter your email here..." required />
+          <input
+            type="email"
+            placeholder="Enter your email here..."
+            id="userEmail"
+            required
+          />
         </div>
         <div class="modal__part modal__part--password">
           <label for="password"
@@ -1012,17 +1017,87 @@
 
         <div id="message">
           <h3>Password must contain the following:</h3>
-          <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-          <p id="special" class="invalid">
+          <p id="letter" class="pass__validator invalid">
+            A <b>lowercase</b> letter
+          </p>
+          <p id="special" class="pass__validator invalid">
             A <b>special</b> character([!"`'#%&,:;<>=@{}~$\(*+\?^)
           </p>
-          <p id="number-modal" class="invalid">A <b>number</b></p>
-          <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+          <p id="number-modal" class="pass__validator invalid">
+            A <b>number</b>
+          </p>
+          <p id="length" class="pass__validator invalid">
+            Minimum <b>8 characters</b>
+          </p>
         </div>
       </fieldset>
+    </div>
+    <!--  -->
+    <!--  -->
+    <!-- BLUR OVERLAY -->
+    <!--  -->
+    <div class="overlay-blur hider"></div>
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--RELEASE MODAL  -->
+    <div class="clock__wrap">
+      <div class="fa-2x">
+        <i class="fa-solid fa-clock fa-bounce"></i>
+      </div>
+    </div>
+    <div class="release__modal hider">
+      <div class="release__modal--part">
+        <h2>We will release OSF Academy</h2>
+        <p>We are working hard and estimated release time products below</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod,
+          magnam?
+        </p>
+      </div>
+      <!-- style="
+            --fa-bounce-start-scale-x: 1;
+            --fa-bounce-start-scale-y: 10;
+            --fa-bounce-jump-scale-x: 1;
+            --fa-bounce-jump-scale-y: 10;
+            --fa-bounce-land-scale-x: 1;
+            --fa-bounce-land-scale-y: 3;
+          "-->
+      <div class="timer" id="timer-timer">
+        <div class="months-div">
+          <div class="timer__item" data-set="months">00</div>
+          <div class="months">Months</div>
+        </div>
+        <div class="days-div">
+          <div class="timer__item" data-set="days">00</div>
+          <div class="months">Days</div>
+        </div>
+        <div class="hours-div">
+          <div class="timer__item" data-set="hours">00</div>
+          <div class="months">Hours</div>
+        </div>
+        <div class="minutes-div">
+          <div class="timer__item" data-set="minutes">00</div>
+          <div class="months">Minutes</div>
+        </div>
+        <div class="seconds-div">
+          <div class="timer__item" data-set="seconds">00</div>
+          <div class="months">Seconds</div>
+        </div>
+      </div>
+      <div class="email__input email__input--timer">
+        <input
+          type="email"
+          placeholder="Enter your email to receive the latest announcements."
+          id="input__timer"
+          required
+        />
+        <button class="submit submit__email">
+          <img src="/build/images/modal/arrow.png" alt="" />
+        </button>
+      </div>
     </div>
     <div class="overlay-blur hider"></div>
     <div id="fullpage"></div>
   </body>
-  <!-- </html>onclick="this.style.display='none';" -->
 </html>

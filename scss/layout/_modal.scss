@@ -6,7 +6,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
-  z-index: 1;
+  z-index: 9999;
   transition: all 0.5s;
 }
 
@@ -22,7 +22,7 @@
   /*   background-color:gray; */
   border-radius: 7px;
   background-color: $white;
-  z-index: 105;
+  z-index: 99999;
   @include mq(small) {
     width: 100%;
     height: 60%;
@@ -116,34 +116,34 @@ label {
   }
 }
 
-input + span {
-  position: relative;
-}
+// input + span {
+//   position: relative;
+// }
 
-input + span::before {
-  position: absolute;
-  right: -20px;
-  top: 5px;
-}
+// input + span::before {
+//   position: absolute;
+//   right: -20px;
+//   top: 5px;
+// }
 
-input:invalid {
-  border: 2px solid rgb(245, 68, 68);
-}
-.submit:invalid {
-  color: 2px solid rgb(245, 68, 68);
-}
+// input:invalid {
+//   border: 2px solid rgb(245, 68, 68);
+// }
+// .submit:invalid {
+//   color: 2px solid rgb(245, 68, 68);
+// }
 
-.submit,
-input:invalid + span::before {
-  content: "";
-  color: rgb(245, 68, 68);
-}
+// .submit,
+// input:invalid {
+//   content: "";
+//   color: rgb(245, 68, 68);
+// }
 
-.submit,
-input:valid + span::before {
-  content: "";
-  color: $green;
-}
+// .submit,
+// input:valid {
+//   content: "";
+//   border: 2px solid $green;
+// }
 
 /* Password validation */
 /*  */
@@ -204,4 +204,8 @@ input:valid + span::before {
   position: relative;
   left: -35px;
   content: "";
+}
+
+input:focus-visible {
+  outline: none;
 }
