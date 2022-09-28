@@ -719,7 +719,7 @@ cardLoad.forEach(function (card, i) {
   jsonFull.load = load;
 });
 
-console.log(jsonFull);
+console.log(JSON.stringify(jsonFull));
 
 // let res = fetch("index.html", {
 //   // fake API endpoint
