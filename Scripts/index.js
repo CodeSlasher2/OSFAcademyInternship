@@ -286,26 +286,33 @@ const btnChecker = function () {
     })
   );
 };
-const addToFavChecker = function () {
-  const addToFav = document.querySelectorAll(".btn-add-to-fav");
-  addToFav.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      favNumber.textContent = Number(favNumber.textContent) + 1;
-    });
-  });
-};
+
+const addToFav = document.querySelectorAll(".btn-add-to-fav");
+// const addToFavChecker = function () {
+//   const addToFav = document.querySelectorAll(".btn-add-to-fav");
+//   addToFav.forEach((btn) => {
+//     btn.addEventListener("click", () => {
+//       favNumber.textContent = Number(favNumber.textContent) + 1;
+//     });
+//   });
+// };
 
 // addToCart.forEach((btn) => btn.addEventListener("click"));
-if (addToCart) {
+if (document.querySelectorAll(".btn-add-to-fav")) {
   const addToFavChecker = function () {
-    const addToFav = document.querySelector(".btn-add-to-fav");
-    addToFav.addEventListener("click", () => {
-      favNumber.textContent = Number(favNumber.textContent) + 1;
-    });
+    const addToFav = document.querySelectorAll(".btn-add-to-fav");
+    addToFav.forEach((btn) =>
+      btn.addEventListener("click", () => {
+        favNumber.textContent = Number(favNumber.textContent) + 1;
+      })
+    );
   };
   addToFavChecker();
   btnChecker();
 }
+// if (document.querySelectorAll(".btn-add-to-fav")) {
+
+// }
 //
 //
 //Modal windows
@@ -326,6 +333,7 @@ togglePassword.addEventListener("click", function (e) {
 /////
 /////EMAIL VALIDATION
 /////
+const emailRelease = document.querySelector("#input__timer");
 const email = document.querySelector("#userEmail");
 let loginticket = 0;
 const validateEmail = (email) => {
@@ -334,19 +342,21 @@ const validateEmail = (email) => {
   );
 };
 
-const validate = () => {
-  const emailText = email.value;
-  console.log(emailText);
+const validate = function (e) {
+  const emailText = this.value;
 
   if (validateEmail(emailText)) {
-    email.style.border = "2px solid #84bc22";
+    this.style.border = "2px solid #84bc22";
     loginticket = 1;
   } else {
-    email.style.border = "2px solid red";
+    this.style.border = "2px solid red";
+    loginticket = 0;
   }
 };
 
-email.addEventListener("input", validate);
+email.addEventListener("input", validate.bind(email));
+emailRelease.addEventListener("input", validate.bind(emailRelease));
+// emailRelease.addEventListener("input", validate);
 
 //////
 //////
@@ -410,8 +420,6 @@ myInput.onkeyup = function () {
 const allValidators = document.querySelectorAll(".pass__validator");
 
 password.addEventListener("input", () => {
-  // console.log(1);
-
   [...allValidators].every((elem) => elem.classList.contains("valid"))
     ? (password.style.border = "2px solid #84bc22")
     : (password.style.border = "2px solid red");
@@ -450,6 +458,7 @@ login.addEventListener("click", (e) => {
     loginticket === 1
   ) {
     closeModal();
+    loginticket = 0;
   }
 });
 
@@ -535,7 +544,6 @@ if (changer) {
       const coloring = getComputedStyle(
         document.documentElement
       ).getPropertyValue(`--${color}`);
-      console.log(coloring);
 
       changer.style.setProperty("background-color", coloring);
       e.target.classList.add("active-color");
@@ -602,7 +610,7 @@ if (tabcontainer) {
       const activeTab = e.target.closest(".operations__tab");
       activeTab.classList.add("operations__tab--active");
       // const dataSet = activeTab.getAttribute("data-tab");
-      console.log(activeTab.dataset.tab);
+
       document
         .querySelector(`.operations__content--${activeTab.dataset.tab}`)
         .classList.add("operations__content--active");
@@ -617,7 +625,6 @@ const previewFotos = document.querySelectorAll(".preview__foto");
 
 if (mainPhoto) {
   previewContainer.addEventListener("click", (e) => {
-    console.log(e.target.closest(".preview__foto"));
     if (e.target.matches("img")) {
       previewFotos.forEach((foto) => foto.classList.remove("selected"));
       mainPhoto.setAttribute("src", `${e.target.dataset.setImg}`);
@@ -697,7 +704,7 @@ if (expander) {
 const currentWidth = document.documentElement.getBoundingClientRect().width;
 const cardContainer = document.querySelector(".card-container");
 const cards = document.querySelectorAll(".card");
-console.log(currentWidth);
+
 const dotContainerPi = document.querySelector(".dots__pi");
 const dotPi = document.querySelector(".dots__dot--pi");
 
@@ -867,80 +874,191 @@ var cookieName = "Accepted";
 var cookieValue = "1";
 var cookieExpireDays = 30;
 // when users click accept button
+let acceptCookie = document.getElementById("acceptCookie");
+if (acceptCookie) {
+  acceptCookie.onclick = function () {
+    createCookie(cookieName, cookieValue, cookieExpireDays);
+  };
+  // function to set cookie in web browser
+  let createCookie = function (cookieName, cookieValue, cookieExpireDays) {
+    let currentDate = new Date();
+    currentDate.setTime(
+      currentDate.getTime() + cookieExpireDays * 24 * 60 * 60 * 1000
+    );
+    let expires = "expires=" + currentDate.toGMTString();
+    document.cookie =
+      cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+    if (document.cookie) {
+      document.querySelector(".cookie-wrap").style.display = "none";
+    } else {
+      alert(
+        "Unable to set cookie. Please allow all cookies site from cookie setting of your browser"
+      );
+    }
+  };
+  // get cookie from the web browser
+  let getCookie = function (cookieName) {
+    let name = cookieName + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  };
+  // check cookie is set or not
+  let checkCookie = function () {
+    let check = getCookie(cookieName);
+    if (check == "") {
+      document.querySelector(".cookie-wrap").style.display = "flex";
+    } else {
+      document.querySelector(".cookie-wrap").style.display = "none";
+    }
+  };
 
-// let acceptCookie = document.getElementById("acceptCookie");
-// acceptCookie.onclick = function () {
-//   createCookie(cookieName, cookieValue, cookieExpireDays);
-// };
-// // function to set cookie in web browser
-// let createCookie = function (cookieName, cookieValue, cookieExpireDays) {
-//   let currentDate = new Date();
-//   currentDate.setTime(
-//     currentDate.getTime() + cookieExpireDays * 24 * 60 * 60 * 1000
-//   );
-//   let expires = "expires=" + currentDate.toGMTString();
-//   document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
-//   if (document.cookie) {
-//     document.getElementById("cookiePopup").style.display = "none";
-//   } else {
-//     alert(
-//       "Unable to set cookie. Please allow all cookies site from cookie setting of your browser"
-//     );
-//   }
-// };
-// // get cookie from the web browser
-// let getCookie = function (cookieName) {
-//   let name = cookieName + "=";
-//   let decodedCookie = decodeURIComponent(document.cookie);
-//   let ca = decodedCookie.split(";");
-//   for (let i = 0; i < ca.length; i++) {
-//     let c = ca[i];
-//     while (c.charAt(0) == " ") {
-//       c = c.substring(1);
-//     }
-//     if (c.indexOf(name) == 0) {
-//       return c.substring(name.length, c.length);
-//     }
-//   }
-//   return "";
-// };
-// // check cookie is set or not
-// let checkCookie = function () {
-//   let check = getCookie(cookieName);
-//   if (check == "") {
-//     document.getElementById("cookiePopup").style.display = "block";
-//   } else {
-//     document.getElementById("cookiePopup").style.display = "none";
-//   }
-// };
-// checkCookie();
+  const closeBtn = document.querySelector(".fa-xmark");
+  const cookieCloser = function () {
+    closeBtn.addEventListener("click", () => {
+      document.querySelector(".cookie-wrap").style.display = "none";
+    });
+  };
 
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      checkCookie();
+      cookieCloser();
+    }, 10000);
+  });
+}
 // //////////
 // //////////
-// //////////TIMER
-// let releaseDate = new Date(2022, 8, 30, 23, 59).getTime();
-// const timerItems = document.querySelectorAll(".timer__item");
+//////////TIMER
+let releaseDate = new Date(2022, 8, 30, 23, 59).getTime();
+const timerItems = document.querySelectorAll(".timer__item");
 
-// const timerUpdate = function () {
-//   let currentDate = new Date().getTime();
-//   let timeLeft = releaseDate - currentDate;
-//   let months = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 30));
-//   let days = Math.floor(
-//     (timeLeft % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
-//   );
-//   let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//   let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-//   let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-//   const arr = [months, days, hours, minutes, seconds];
+const timerUpdate = function () {
+  let currentDate = new Date().getTime();
+  let timeLeft = releaseDate - currentDate;
+  let months = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 30));
+  let days = Math.floor(
+    (timeLeft % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
+  );
+  let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  const arr = [months, days, hours, minutes, seconds];
 
-//   timerItems.forEach((item, i) => {
-//     item.innerHTML = arr[i] < 10 ? "0" + arr[i] : arr[i];
-//   });
+  timerItems.forEach((item, i) => {
+    item.innerHTML = arr[i] < 10 ? "0" + arr[i] : arr[i];
+  });
 
-//   if (timeLeft < 0) {
-//     clearInterval(x);
-//     document.getElementById("timer-timer").innerHTML = "EXPIRED";
-//   }
-// };
-// timerUpdate();
-// setInterval(timerUpdate, 1000);
+  if (timeLeft < 0) {
+    clearInterval(x);
+    document.getElementById("timer-timer").innerHTML = "EXPIRED";
+  }
+};
+timerUpdate();
+setInterval(timerUpdate, 1000);
+
+//////
+//////
+//////email json sender
+const submitBtn = document.querySelector(".submit__email");
+// let emailCounter = 0;
+let newsEmail;
+let emailCounter;
+
+function addKeyValue(obj, key, data) {
+  obj[key] = data;
+}
+
+let newinfo = function () {
+  emailCounter++;
+  return addKeyValue(newsEmail, `${emailCounter}`, `${emailRelease.value}`);
+};
+
+submitBtn.addEventListener("click", () => {
+  if (loginticket === 1) {
+    //get json
+    getEmailCounter();
+    //updatejson
+    newinfo();
+    //post newjson
+    postFunction();
+  }
+});
+
+const postFunction = function () {
+  fetch("https://api.jsonbin.io/v3/b/6335db02e13e6063dcba56f1", {
+    method: "PUT",
+    headers: {
+      "X-Master-Key":
+        "$2b$10$.zf8ZL3lYRlP2KIBZ5VpU./cSIf3yph/ysfTuBEfbcch6TMApHYRK",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newsEmail),
+  });
+};
+
+const getEmailCounter = function () {
+  fetch("https://api.jsonbin.io/v3/b/6335db02e13e6063dcba56f1", {
+    method: "GET",
+    headers: {
+      "X-Master-Key":
+        "$2b$10$.zf8ZL3lYRlP2KIBZ5VpU./cSIf3yph/ysfTuBEfbcch6TMApHYRK",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => jsonReader(data.record))
+    // .then(console.log(o2))
+    .catch((err) => {
+      console.error(`${err}`);
+      errHandler(`Something went wrong...${err.message}`);
+    })
+    .finally(() => {
+      emailCounter = Object.keys(newsEmail).length;
+      timerModal.classList.add("hider");
+      btnCloseModal.classList.add("hider");
+      enableScroll();
+      emailRelease.value = "";
+    });
+  // overlayChecker(productsOverlay);
+};
+getEmailCounter();
+
+const jsonReader = function (obj) {
+  newsEmail = { ...obj };
+  return newsEmail;
+};
+
+/////////
+/////////
+/////////PRINTING
+
+const body = document.querySelector("body");
+const removable = document.querySelectorAll(".print__out");
+const tabContainer = document.querySelector(".tab__container");
+const popularItems = document.querySelector(".popular-items-container-pdp");
+const services = document.querySelector(".services-banner");
+const printable = document.querySelector(".cpl__container");
+
+const printContent = function () {
+  if (tabContainer.parentNode) {
+    removable.forEach((elem) => elem.parentNode.removeChild(elem));
+    timerToggler.classList.add("hider");
+    printable.style.marginTop = "0px";
+  }
+  window.print();
+  body.prepend(header);
+  body.append(tabContainer, popularItems, services, footer);
+  timerToggler.classList.remove("hider");
+  printable.style.marginTop = "70px";
+};
+
+document.querySelector(".print").addEventListener("click", printContent);

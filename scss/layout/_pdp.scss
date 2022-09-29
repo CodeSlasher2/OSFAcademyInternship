@@ -486,3 +486,14 @@ input[type="number"]::-webkit-outer-spin-button {
 .line-pdp {
   background-color: hsla(26, 5%, 26%, 0.1);
 }
+
+.print-btn {
+  background-color: transparent;
+  border: 2px solid $green;
+  border-radius: 40px;
+  padding: 13px 40px;
+  &:hover {
+    background-color: $green;
+    cursor: pointer;
+  }
+}

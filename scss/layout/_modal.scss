@@ -209,3 +209,68 @@ label {
 input:focus-visible {
   outline: none;
 }
+
+.cookie-wrap {
+  width: 90%;
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $white;
+  padding: 30px 25px 20px 25px;
+  justify-content: space-between;
+  display: none;
+  z-index: 9999999;
+  border-radius: 7px;
+}
+
+.cookie__text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 78%;
+  color: $gray;
+}
+
+.cookie__part--title {
+  font-size: 24px;
+  color: $green;
+  font-weight: 800;
+}
+
+.cookie__part--text {
+  > p {
+    line-height: 1.4em;
+  }
+}
+
+.policy {
+  color: $green;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.close-cookie {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: transparent;
+  border: none;
+}
+
+.accept-cookie {
+  @extend .cpl__loadmore;
+  align-self: flex-end;
+  margin-bottom: 0 !important;
+  padding: 13px 40px !important;
+  width: 150px;
+  height: 36px;
+  line-height: 1em;
+}
+
+.fa-xmark {
+  &:hover {
+    cursor: pointer;
+  }
+}

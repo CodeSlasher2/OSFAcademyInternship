@@ -2061,10 +2061,70 @@ input:focus-visible {
   outline: none;
 }
 
-.cpl__container {
+.cookie-wrap {
+  width: 90%;
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 30px 25px 20px 25px;
+  justify-content: space-between;
+  display: none;
+  z-index: 9999999;
+  border-radius: 7px;
+}
+
+.cookie__text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 78%;
+  color: #45413e;
+}
+
+.cookie__part--title {
+  font-size: 24px;
+  color: #84bc22;
+  font-weight: 800;
+}
+
+.cookie__part--text > p {
+  line-height: 1.4em;
+}
+
+.policy {
+  color: #84bc22;
+}
+.policy:hover {
+  cursor: pointer;
+}
+
+.close-cookie {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: transparent;
+  border: none;
+}
+
+.accept-cookie {
+  align-self: flex-end;
+  margin-bottom: 0 !important;
+  padding: 13px 40px !important;
+  width: 150px;
+  height: 36px;
+  line-height: 1em;
+}
+
+.fa-xmark:hover {
+  cursor: pointer;
+}
+
+.cpl__container, .notfound__container {
   width: 100%;
   height: 100%;
-  margin-top: 3px;
+  margin-top: 70px;
   background-color: #f2edea;
   display: flex;
   flex-direction: column;
@@ -2072,12 +2132,12 @@ input:focus-visible {
   gap: 50px;
 }
 
-.cpl__title, .pdp__title {
+.cpl__title, .notfound__title, .pdp__title {
   width: 210px;
   margin-top: 55px;
 }
 @media (min-width: 1px) and (max-width: 768px) {
-  .cpl__title, .pdp__title {
+  .cpl__title, .notfound__title, .pdp__title {
     margin-top: 105px;
   }
 }
@@ -2104,7 +2164,7 @@ input:focus-visible {
   cursor: pointer;
 }
 
-.page-title, .product-name {
+.page-title, .page-title-404, .product-name {
   font-size: 48px;
   font-weight: 800;
 }
@@ -2341,7 +2401,7 @@ select:focus {
   }
 }
 
-.cpl__loadmore {
+.cpl__loadmore, .accept-cookie {
   font-size: 14px;
   text-transform: uppercase;
   border: none;
@@ -2351,7 +2411,7 @@ select:focus {
   background-color: #84bc22;
   margin-bottom: 50px;
 }
-.cpl__loadmore:hover {
+.cpl__loadmore:hover, .accept-cookie:hover {
   color: #84bc22;
   background-color: #262a32;
   cursor: pointer;
@@ -2444,7 +2504,7 @@ select:focus {
   .product__section .input-container {
     flex-direction: column;
   }
-  .product__section .cpl__loadmore {
+  .product__section .cpl__loadmore, .product__section .accept-cookie {
     width: 200px;
   }
   .product__section .description {
@@ -2852,6 +2912,126 @@ input[type=number]::-webkit-outer-spin-button {
 
 .line-pdp {
   background-color: hsla(26deg, 5%, 26%, 0.1);
+}
+
+.print-btn {
+  background-color: transparent;
+  border: 2px solid #84bc22;
+  border-radius: 40px;
+  padding: 13px 40px;
+}
+.print-btn:hover {
+  background-color: #84bc22;
+  cursor: pointer;
+}
+
+.notfound__container {
+  margin-top: 75px;
+}
+
+.notfound__title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.breadcrumbs--404 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-title-404 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.page-title-404__inner {
+  display: flex;
+  flex-direction: row;
+  width: 1170px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  gap: 2rem;
+}
+.page-title-404__inner > p {
+  font-weight: 800;
+  color: #45413e;
+}
+
+.line404 {
+  background-color: rgba(69, 65, 62, 0.2);
+}
+
+.main__container {
+  background-color: #fff;
+  width: 1170px;
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.oops {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+.oops > p {
+  font-size: 113px;
+  font-weight: 800;
+  color: #84bc22;
+  margin: 0 auto;
+}
+
+.content__404 {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.7em;
+}
+
+.content-404__title {
+  font-size: 24px;
+  color: #000;
+  font-weight: 800;
+  margin-top: 55px;
+}
+
+.paragraph {
+  color: #45413e;
+  line-height: 1.4em;
+}
+.paragraph:last-of-type {
+  margin-bottom: 30px;
+}
+
+.home-btn-2 {
+  color: #84bc22;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+.home-btn-2:hover {
+  color: #45413e;
+}
+
+.label__search {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+#search {
+  background-image: url(../../build/images/search-icn.png);
+  background-repeat: no-repeat;
+  background-position: 90% 50%;
+  border: 2px solid rgba(69, 65, 62, 0.3);
 }
 
 .btn {
