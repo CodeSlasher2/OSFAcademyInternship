@@ -1047,12 +1047,19 @@ const tabContainer = document.querySelector(".tab__container");
 const popularItems = document.querySelector(".popular-items-container-pdp");
 const services = document.querySelector(".services-banner");
 const printable = document.querySelector(".cpl__container");
+const printItem = document.querySelector(".product__section");
+const inputContainer = document.querySelector(".input-container");
+const descriptionContainer = document.querySelector(".description-inner");
 
 const printContent = function () {
   if (tabContainer.parentNode) {
     removable.forEach((elem) => elem.parentNode.removeChild(elem));
     timerToggler.classList.add("hider");
+    inputContainer.classList.add("hider");
+    descriptionContainer.append();
     printable.style.marginTop = "0px";
+    // printItem.style.transform = "scale(0.5)";
+    printItem.style.width = "100%";
   }
   window.print();
   body.prepend(header);
@@ -1060,5 +1067,10 @@ const printContent = function () {
   timerToggler.classList.remove("hider");
   printable.style.marginTop = "70px";
 };
+if (mainPhoto) {
+}
+if (mainPhoto) {
+  document.querySelector(".print").addEventListener("click", printContent);
+}
 
-document.querySelector(".print").addEventListener("click", printContent);
+// const ratePrint=

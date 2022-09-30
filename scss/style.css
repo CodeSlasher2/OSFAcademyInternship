@@ -1350,7 +1350,6 @@ body {
   margin: 20px 0px 60px 0px;
   border-radius: 45px;
   display: inline-block;
-  max-width: 270px;
 }
 .btn-load-more:hover {
   color: #262a32;
