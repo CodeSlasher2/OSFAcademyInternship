@@ -303,18 +303,18 @@ const addToFav = document.querySelectorAll(".btn-add-to-fav");
 // };
 
 // addToCart.forEach((btn) => btn.addEventListener("click"));
-if (document.querySelectorAll(".btn-add-to-fav")) {
-  const addToFavChecker = function () {
-    const addToFav = document.querySelectorAll(".btn-add-to-fav");
-    addToFav.forEach((btn) =>
-      btn.addEventListener("click", () => {
-        favNumber.textContent = Number(favNumber.textContent) + 1;
-      })
-    );
-  };
-  addToFavChecker();
-  btnChecker();
-}
+
+const addToFavChecker = function () {
+  const addToFav = document.querySelectorAll(".btn-add-to-fav");
+  addToFav.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      favNumber.textContent = Number(favNumber.textContent) + 1;
+    })
+  );
+};
+addToFavChecker();
+btnChecker();
+
 // if (document.querySelectorAll(".btn-add-to-fav")) {
 
 // }
@@ -424,7 +424,7 @@ myInput.onkeyup = function () {
 };
 const allValidators = document.querySelectorAll(".pass__validator");
 
-password.addEventListener("input", () => {
+password.addEventListener("keyup", () => {
   [...allValidators].every((elem) => elem.classList.contains("valid"))
     ? (password.style.border = "2px solid #84bc22")
     : (password.style.border = "2px solid red");
@@ -721,9 +721,7 @@ const dotPi = document.querySelector(".dots__dot--pi");
 
 ///////////////////////BUG
 ///////////////////////
-//cards.forEach((card) => (card.style.transform = "none"));
 
-// window.removeEventListener("resize", widthChecker);
 const widthChecker = function () {
   if (this.width < 768 && !dotPi) {
     createDots(cards, dotContainerPi);
@@ -731,14 +729,6 @@ const widthChecker = function () {
     cards.forEach((card) => (card.style.transform = "none"));
   }
 };
-
-// const goToSlideChecker = function () {
-//   if (this.width < 768 && !dotPi) {
-//     createDots(cards, dotContainerPi);
-//   } else if (this.width > 768) {
-//     cards.forEach((card) => (card.style.transform = "none"));
-//   }
-// };
 
 window.addEventListener("resize", widthChecker);
 if (dotContainerPi && window.innerWidth < 768) {
@@ -781,16 +771,16 @@ if (dotContainerPi && window.innerWidth < 768) {
   });
 }
 
-// window.addEventListener("resize", widthChecker);
-
 /////////
-/////////json post
+/////////json loadmore
 /////////
 
 const cardLoad = document.querySelectorAll(".card-load");
 const cardText = document.querySelector(".card-text");
 const cardRate = document.querySelector(".card-title");
+const clpContainer = document.querySelector(".json__Insertion");
 
+//constructor for Json
 class Card {
   constructor(cardJson) {
     this.src = cardJson.firstElementChild.getAttribute("src");
@@ -799,7 +789,6 @@ class Card {
   }
 }
 
-// let keyvalue='load1'
 // const jsonFull = {};
 // const load = [];
 // cardLoad.forEach(function (card, i) {
@@ -807,10 +796,7 @@ class Card {
 //   jsonFull.load = load;
 // });
 
-// console.log(JSON.stringify(jsonFull));
-
 const loadMoreBtn = document.querySelector(".btn-load-more");
-// const cardContainer = document.querySelector(".card-container");
 
 const errHandler = function (msg) {
   loadMoreBtn.textContent = `${msg}`;
@@ -1067,16 +1053,17 @@ const printContent = function () {
     removable.forEach((elem) => elem.parentNode.removeChild(elem));
     timerToggler.classList.add("hider");
     inputContainer.classList.add("hider");
-    descriptionContainer.append();
+
     printable.style.marginTop = "0px";
-    // printItem.style.transform = "scale(0.5)";
-    printItem.style.width = "100%";
   }
   window.print();
   body.prepend(header);
   body.append(tabContainer, popularItems, services, footer);
   timerToggler.classList.remove("hider");
-  printable.style.marginTop = "70px";
+  // descriptionContainer.append();
+  // printable.style.marginTop = "70px";
+  // printItem.style.width = "";
+  // previewContainer.style.flexwrap = "no-wrap";
 };
 if (mainPhoto) {
 }

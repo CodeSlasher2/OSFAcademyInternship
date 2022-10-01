@@ -31,6 +31,10 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+.margin {
+  margin-top: 20px;
+}
+
 * {
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -1307,14 +1311,13 @@ body {
 .card-2-price {
   font-size: 14px;
   align-self: center;
-  padding: 12px 15px 12px 20px;
+  padding: 20px 15px 20px 20px;
   padding-left: 41px;
   color: #24c36c;
 }
 .card-2-price:hover {
   color: #fff;
   background-color: #24c36c;
-  border-left: 2px solid #24c36c;
 }
 
 .butttns {
