@@ -2270,7 +2270,7 @@ input:focus-visible {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-image: url(./../../build/images/cpl/arr-down.png);
+  background-image: url(./../build/images/cpl/arr-down.png);
   background-repeat: no-repeat;
   background-position: 90% 50%;
 }
