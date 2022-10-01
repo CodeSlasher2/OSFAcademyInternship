@@ -71,11 +71,6 @@
   display: none;
 }
 
-// .slide-2,
-// .slide-3 {
-//   display: none;
-// }
-
 .inner-hero {
   height: 100%;
   max-height: 505px;
@@ -96,13 +91,6 @@
   position: absolute;
   height: 505px;
   transition: transform 0.4s ease-in-out;
-}
-
-.slider-title-1,
-.slider-text-1,
-.slider-btn {
-  position: relative;
-  text-shadow: 2px 1px rgba($color: #000000, $alpha: 0.2);
 }
 
 .slider-text-container-1 {
@@ -134,21 +122,6 @@
 .slider-btn {
   @include btnView;
 }
-
-/////////////////////////////@at-root
-/// //////////////////////////TURN ON
-/// //////////////////////////
-
-// .slider-nav {
-//   position: absolute;
-//   display: flex;
-//   width: fit-content;
-//   height: 12px;
-//   align-self: center;
-//   background-color: transparent;
-//   bottom: 45px;
-//   z-index: 100;
-// }
 
 .img-slider {
   position: relative;

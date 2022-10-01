@@ -210,7 +210,7 @@ a {
 }
 @media (min-width: 769px) and (max-width: 1280px) {
   .dropdown-content {
-    top: 75px;
+    top: 72px;
   }
   .dropdown-content .container-dropdown {
     width: 90%;
@@ -345,6 +345,16 @@ body {
   margin-right: 10px;
   display: flex;
 }
+@media (min-width: 769px) and (max-width: 1280px) {
+  .logo-osf {
+    width: 100px;
+    align-items: center;
+  }
+  .logo-osf > img {
+    width: 40px;
+    height: 40px;
+  }
+}
 
 .logo-name {
   text-align: center;
@@ -356,9 +366,19 @@ body {
   font-size: 31.65px;
   font-weight: 900;
 }
+@media (min-width: 769px) and (max-width: 1280px) {
+  .logo-name-1 {
+    font-size: 24px;
+  }
+}
 .logo-name-2 {
   color: #84bc22;
   font-size: 18px;
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .logo-name-2 {
+    font-size: 18px;
+  }
 }
 
 .nav {
@@ -407,14 +427,14 @@ body {
   .nav .nav-inner {
     display: flex;
     align-items: flex-end;
-    gap: 15px;
+    gap: 0px;
   }
   .nav .nav-link {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
     margin: 0;
-    padding: 0;
+    padding: 0 10px;
   }
   .nav .btn-nav {
     display: none;
@@ -529,7 +549,42 @@ body {
 }
 @media (min-width: 769px) and (max-width: 1280px) {
   .nav-btn-container {
-    display: none;
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 55px;
+    bottom: 0%;
+    left: 0;
+    background-color: #262a32;
+    margin: 0%;
+  }
+  .nav-btn-container .btn-nav {
+    background-color: transparent;
+    width: 35px;
+  }
+  .nav-btn-container .btn {
+    margin: 0;
+  }
+  .nav-btn-container .btn > img {
+    filter: brightness(4);
+  }
+  .nav-btn-container .products-counter,
+.nav-btn-container .favorite-counter {
+    background-color: #262a32;
+    width: 19px;
+    height: 19px;
+  }
+  .nav-btn-container .counter-position {
+    background-color: #262a32;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 @media (min-width: 1280px) {
@@ -771,7 +826,7 @@ body {
 .select-language-dropdown {
   position: absolute;
   display: none;
-  top: 63px;
+  top: 60px;
   width: 100%;
   left: 0;
   height: 6rem;
@@ -1229,7 +1284,6 @@ body {
   height: 40px;
   border: solid 2px rgba(127, 127, 127, 0.3);
   border-radius: 35px;
-  width: 75%;
   overflow: hidden;
 }
 
@@ -1253,13 +1307,14 @@ body {
 .card-2-price {
   font-size: 14px;
   align-self: center;
-  padding: 12px 15px;
+  padding: 12px 15px 12px 20px;
   padding-left: 41px;
   color: #24c36c;
 }
 .card-2-price:hover {
   color: #fff;
   background-color: #24c36c;
+  border-left: 2px solid #24c36c;
 }
 
 .butttns {
@@ -1639,13 +1694,6 @@ body {
   transition: transform 0.4s ease-in-out;
 }
 
-.slider-title-1,
-.slider-text-1,
-.slider-btn {
-  position: relative;
-  text-shadow: 2px 1px rgba(0, 0, 0, 0.2);
-}
-
 .slider-text-container-1 {
   position: absolute;
   top: 0px;
@@ -1728,7 +1776,7 @@ body {
 }
 .slider-btn:hover {
   background-color: #fff;
-  color: #315bbd;
+  color: #262a32;
 }
 
 .img-slider {
@@ -1902,7 +1950,7 @@ body {
 @media (min-width: 1px) and (max-width: 768px) {
   .modal {
     width: 100%;
-    height: 60%;
+    height: 70%;
   }
 }
 
@@ -2222,7 +2270,7 @@ input:focus-visible {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-image: url(../../build/images/cpl/arr-down.png);
+  background-image: url(./../../build/images/cpl/arr-down.png);
   background-repeat: no-repeat;
   background-position: 90% 50%;
 }
@@ -3077,9 +3125,22 @@ input[type=number]::-webkit-outer-spin-button {
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   gap: 2rem;
   padding: 10px 5px;
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .timer {
+    width: 100%;
+    gap: 1em;
+  }
+}
+@media (min-width: 1px) and (max-width: 768px) {
+  .timer {
+    width: 100%;
+    gap: 1em;
+    flex-wrap: wrap;
+  }
 }
 
 .timer__item {
@@ -3093,6 +3154,22 @@ input[type=number]::-webkit-outer-spin-button {
   width: 110px;
   height: 110px;
   line-height: 110px;
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .timer__item {
+    font-size: 1.5em;
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+  }
+}
+@media (min-width: 1px) and (max-width: 768px) {
+  .timer__item {
+    font-size: 0.7em;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+  }
 }
 
 .months {
@@ -3127,6 +3204,16 @@ input[type=number]::-webkit-outer-spin-button {
 .clock__wrap:hover .fa-clock {
   color: #262a32;
 }
+@media (min-width: 1px) and (max-width: 768px) {
+  .clock__wrap {
+    height: 3em;
+    width: 2em;
+    line-height: 1em;
+  }
+  .clock__wrap .fa-clock {
+    font-size: 0.6em;
+  }
+}
 
 .email__input--timer {
   width: 60%;
@@ -3136,7 +3223,7 @@ input[type=number]::-webkit-outer-spin-button {
 .email__input--timer > button {
   position: absolute;
   top: 50%;
-  left: 90%;
+  left: 85%;
   transform: translateY(-50%);
   border: 2px solid #84bc22;
   border-radius: 50%;
@@ -3148,8 +3235,20 @@ input[type=number]::-webkit-outer-spin-button {
 .email__input--timer > button:hover {
   cursor: pointer;
 }
+@media (min-width: 1px) and (max-width: 768px) {
+  .email__input--timer {
+    width: 100%;
+    place-content: "Enter your email";
+  }
+}
 
 #input__timer {
   width: 30%;
   flex-grow: 2;
+}
+
+.time__div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */

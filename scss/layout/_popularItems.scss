@@ -141,8 +141,9 @@
   height: 40px;
   border: $border-side;
   border-radius: 35px;
+  // gap: 5px;
   // padding: 4px 35px;
-  width: 75%;
+  // width: 75%;
   overflow: hidden;
 }
 .line-between {
@@ -165,12 +166,14 @@
 .card-2-price {
   font-size: 14px;
   align-self: center;
-  padding: 12px 15px;
+  padding: 12px 15px 12px 20px;
+
   padding-left: 41px;
   color: #24c36c;
   &:hover {
     color: $white;
     background-color: #24c36c;
+    border-left: 2px solid #24c36c;
   }
 }
 

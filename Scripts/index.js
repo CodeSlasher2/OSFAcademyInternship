@@ -22,7 +22,7 @@ hamburgerMenu.addEventListener("click", function (e) {
 });
 
 //
-//Nav opener
+//Nav opener // // // //
 document.addEventListener("click", function (e) {
   const clickedDropdown = e.target.closest("[data-dropdown-btn]");
 
@@ -33,6 +33,11 @@ document.addEventListener("click", function (e) {
   if (!clickedDropdown) {
     dropdownBody.classList.remove("active");
   }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+      dropdownBody.classList.remove("active");
+    }
+  });
 
   //
   //3rd level romoval
@@ -446,6 +451,9 @@ const closeModal = function () {
   modal.classList.add("hider");
   btnCloseModal.classList.add("hider");
   timerModal.classList.add("hider");
+  password.value = "";
+  email.value = "";
+  emailRelease.value = "";
   enableScroll();
 };
 
@@ -522,7 +530,10 @@ const prevSlidefp = function () {
 };
 
 // Slider functionality
-// setInterval(nextSlidefp, 5000);
+
+if (fpCardsContainer) {
+  setInterval(nextSlidefp, 5000);
+}
 
 ////
 ///Year in footer
