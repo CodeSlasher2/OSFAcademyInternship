@@ -187,6 +187,8 @@ body {
       h1 {
         width: 100%;
 
+        font-weight: 700;
+        font-size: 14px;
         padding: 12px 0;
       }
     }
@@ -334,16 +336,16 @@ body {
   align-items: center;
   padding: 0 10px;
   // position: relative;
+  h1 {
+    font-weight: 400;
+    font-size: 16px;
+  }
   &:hover {
     background-color: $main;
     color: $white;
     cursor: pointer;
     border-bottom: solid 3px $green;
   }
-  // h1 {
-  //   font-weight: 400;
-  //   font-size: 16px;
-  // }
 }
 
 .noborder {

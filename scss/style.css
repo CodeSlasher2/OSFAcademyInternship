@@ -488,6 +488,8 @@ body {
   }
   .nav-inner .nav-link h1 {
     width: 100%;
+    font-weight: 700;
+    font-size: 14px;
     padding: 12px 0;
   }
   .nav-inner .arrow-down {
@@ -634,6 +636,10 @@ body {
   display: flex;
   align-items: center;
   padding: 0 10px;
+}
+.nav-link h1 {
+  font-weight: 400;
+  font-size: 16px;
 }
 .nav-link:hover {
   background-color: #262a32;
