@@ -251,7 +251,7 @@ document.addEventListener("click", checkerCurrency);
 //Popular items overlay
 ////
 
-const productsOverlay = document.querySelectorAll(".card");
+const productsOverlay = document.querySelectorAll(".card-over");
 const cardOverlay = document.querySelector(".card-overlay");
 const overlayChecker = function (cards) {
   cards.forEach((card) =>

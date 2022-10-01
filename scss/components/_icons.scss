@@ -15,7 +15,6 @@
   z-index: 9999999;
   background-color: $white;
   color: $gray;
-
 }
 
 .release__modal--part {
@@ -138,7 +137,7 @@
   }
   @include mq(small) {
     width: 100%;
-    place-content: "Enter your email";
+    font-size: 12px;
   }
 }
 
