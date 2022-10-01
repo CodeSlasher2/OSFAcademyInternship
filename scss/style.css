@@ -1624,7 +1624,6 @@ body {
 }
 @media (min-width: 1px) and (max-width: 768px) {
   .container-hero {
-    padding-top: 50px;
     max-height: 515px;
   }
   .container-hero .sales-hero {
