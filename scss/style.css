@@ -1480,6 +1480,7 @@ body {
 @media (min-width: 769px) and (max-width: 1280px) {
   .footer-container {
     max-width: 90%;
+    margin-bottom: 55px;
   }
   .footer-container .copyright-container {
     max-width: 145px;
@@ -2270,7 +2271,7 @@ input:focus-visible {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-image: url(./../build/images/cpl/arr-down.png);
+  background-image: url(./../build/images/cpl/.arrow-down.png);
   background-repeat: no-repeat;
   background-position: 90% 50%;
 }
