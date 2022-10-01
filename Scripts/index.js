@@ -939,7 +939,7 @@ if (acceptCookie) {
 // //////////
 // //////////
 //////////TIMER
-let releaseDate = new Date(2022, 8, 30, 23, 59).getTime();
+let releaseDate = new Date(2022, 9, 1, 23, 59).getTime();
 const timerItems = document.querySelectorAll(".timer__item");
 
 const timerUpdate = function () {
@@ -959,7 +959,7 @@ const timerUpdate = function () {
   });
 
   if (timeLeft < 0) {
-    clearInterval(x);
+    clearInterval();
     document.getElementById("timer-timer").innerHTML = "EXPIRED";
   }
 };
